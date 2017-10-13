@@ -24,10 +24,6 @@ use Roots\Sage\Wrapper;
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js" type="text/javascript"></script>  
-    <?php
-        do_action('get_footer');
-        get_template_part('templates/footer');
-        wp_footer();
-    ?>  
+    <?php do_action('get_footer');get_template_part('templates/footer');wp_footer();?>  
     </body>
 </html>

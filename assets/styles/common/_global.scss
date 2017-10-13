@@ -60,6 +60,10 @@ main, .main {
     }
 }
 
+.grey-bg {
+    background: $pale;
+}
+
 // Intro
 
 .intro {
@@ -228,15 +232,22 @@ main, .main {
     height: 105px;
     li {
         padding-left: 20px;
+        color: $light;
+        @include semi();
+        font-size: 14px;
+        line-height: 30px;
         a, a:not([href]):not([tabindex]) {
-            color: $light;
-            @include semi();
-            font-size: 14px;
-            line-height: 30px;
             cursor: pointer;
+            color: $light;
+            &.contact-link {
+                color: $dark_blue;
+            }
             &:hover, &.active {
                 color: $charcoal;
             }
+        }
+        &:hover, &.active {
+            color: $charcoal;
         }
     }
 }
@@ -649,3 +660,105 @@ main, .main {
         }
     }
 }
+
+// Contact Page
+
+.contact {
+    background: $pale;
+}
+
+.contact-wrap {
+    padding: 0 0 245px;
+}
+
+.location {
+    height: 425px;
+    position: relative;
+    margin: 0 auto 25px;
+    display: block;
+    .location-entry {
+        width: 440px;
+        position: absolute;
+        top: 65px;
+        right: 60px;
+        bottom: 65px;
+        padding: 40px;
+        &:before {
+            content:'';
+            position: absolute;
+            background: $white;
+            top: 0;
+            bottom: 0;
+            width: 0%;
+            left: 0;
+            right: auto;
+            @include easing_med();
+        }
+        .location-title {
+            @include semi();
+            color: $red;
+            text-transform: uppercase;
+            font-size: 20px;
+            line-height: 26px;
+            position: relative;
+            margin: 0 auto 17px;
+            padding-bottom: 17px;
+            &:before {
+                content:'';
+                position: absolute;
+                bottom: 0;
+                width: 90px;
+                height: 2px;
+                background: $red;
+            }
+        }
+        p, ul li {
+            line-height: 24px;
+            font-size: 18px;
+        }
+        ul {
+            li {
+                span {
+                    @include bold();
+                }
+            }
+        }
+        .location-inner {
+            opacity: 0;
+            @include easing_med();
+            transition-delay: 0.2s;
+            position: relative;
+        }
+    }
+    &.in-view {
+        .location-entry {
+            &:before {
+                width: 100%;
+            }
+        }
+        .location-entry {
+            .location-inner {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// Search
+.search {
+    background: $pale;
+    .articles-wrap {
+        min-height: 500px;
+    }
+    .search-header {
+        color: $light_blue;
+        @include heading();
+        font-size: 52px;
+        line-height: 62px;
+    }
+}
+
+.no-results {
+    padding: 100px 0 25vh;
+}
+

@@ -1,5 +1,5 @@
 (function($) {
-    
+
 function global_functions() {
     
     // JavaScript to be fired on all pages
@@ -67,6 +67,7 @@ function global_functions() {
         offsetBot: 200 // bottom threshold to be considered "in view"
     }); 
 }    
+global_functions();
 // End Global Functions
     
 // Parallax Functino
@@ -221,12 +222,20 @@ var BasicPage = Barba.BaseView.extend({
     }
 }); 
     
+var SearchResults = Barba.BaseView.extend({
+    namespace: 'search_results',
+    onEnterCompleted: function() {
+        $('.menu-item-20').addClass('current_page_item');
+    }
+}); 
+    
 Homepage.init();  
 TeamPage.init();
 SolutionsPage.init();
 BlogPage.init();
 AboutPage.init();
 BasicPage.init();
+SearchResults.init();
               
 var FadeTransition = Barba.BaseTransition.extend({
   start: function() {

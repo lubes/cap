@@ -41,6 +41,8 @@ function this_page() {
         echo 'solutions';
     } elseif (is_home('blog')) {
         echo 'blog';
+    } elseif (is_search()) {
+        echo 'search_results';
     } else {
         echo 'basic';
     }

@@ -70,7 +70,49 @@
             height: 45px;
         }
     }
-} 
+}
+
+.search, .blog, .dark {
+    .banner {
+        .brand {
+            background: url(../images/caprock_logo_dark.svg) no-repeat center;
+            background-size: contain;
+        }
+        .nav-primary {
+            ul {
+                li {
+                    a {
+                        color: $dark_blue;
+                        &:before {
+                            background: $dark_blue;
+                        }
+                    }
+                }
+            }
+        }
+        &.smaller {
+            height: 80px;
+            padding: 15px 0;
+            background: $dark_blue;
+            .brand {
+                background: url(../images/caprock_logo.svg) no-repeat center;
+                background-size: contain;
+            }
+            .nav-primary {
+                ul {
+                    li {
+                        a {
+                            color: $white;
+                            &:before {
+                                background: $white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 // Home
 

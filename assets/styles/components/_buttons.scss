@@ -72,4 +72,16 @@
             }
         }
     }
+    &.btn-link {
+        padding-left: 0;
+        font-size: 14px;
+        &:hover {
+            &:after {
+                @include arrow_icon_orange();
+            }
+        }
+        &.btn-red {
+            color: $red;
+        }
+    }
 }
