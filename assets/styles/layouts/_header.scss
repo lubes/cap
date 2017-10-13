@@ -1,0 +1,85 @@
+.banner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    padding: 50px 0 0;
+    @include easing();
+    .brand {
+        background: url(../images/caprock_logo.svg) no-repeat center;
+        background-size: contain;
+        display: block;
+        width: 210px;
+        height: 55px;
+        text-indent: -99999px;
+        float: left;
+        @include easing();
+    }
+    .nav-primary {
+        float: right;
+        ul {
+            li {
+                margin-left: 30px;
+                a {
+                    color: $white;
+                    display: block;
+                    font-size: 12px;
+                    @include semi();
+                    text-transform: uppercase;
+                    line-height: 50px;
+                    letter-spacing: 0.05em;
+                    position: relative;
+                    &:before {
+                        content:'';
+                        position: absolute;
+                        bottom: 12px;
+                        left: 50%;
+                        right: auto;
+                        width: 0%;
+                        height: 2px;
+                        background: $white;
+                        @include easing();
+                    }
+                    &:hover {
+                        &:before {
+                            width: 100%;
+                            left:0;
+                            right: 0;
+                        }
+                    }
+                }
+                &.current_page_item {
+                    a {
+                        &:before {
+                            width: 100%;
+                            left:0;
+                            right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.smaller {
+        height: 80px;
+        padding: 15px 0;
+        background: $dark_blue;
+        .brand {
+            width: 175px;
+            height: 45px;
+        }
+    }
+} 
+
+// Home
+
+.home {
+    .banner {
+        top: -160px;
+        &.smaller {
+            position: fixed;
+            top: 0;
+        }
+    }    
+}

@@ -1,0 +1,75 @@
+.btn {
+    color: $white;
+    border-radius: 0;
+    font-size: 12px;
+    @include bold();
+    letter-spacing: 0.05em;
+    padding: 0 40px;
+    height: 50px;
+    line-height: 48px;
+    position: relative;
+    z-index: 1;
+    @include cubic();
+    &.btn-icon {
+        &:after {
+            content:'';
+            @include arrow_icon_orange();
+            position: absolute;
+            right: 15px;
+            font-size: 17px;
+            top: 15px;
+            z-index: 1;
+            @include cubic();
+        }
+        &:hover {
+            padding-right: 50px;
+            &:after {
+                right: 20px;
+                @include arrow_icon_white();
+            }
+        }
+    }
+    &.btn-lg {
+        font-size: 14px;
+    }
+    &.btn-blue {
+        background: $light_blue;
+        &.btn-icon {
+            &:after {
+                @include arrow-icon_white();
+            }
+        }
+        &:hover, &:focus {
+            background: $dark_blue;
+            color: $white;
+        }
+    }
+    &.btn-outline {
+        &:before {
+            content:'';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: auto;
+            right: 0;
+            width: 0%;
+            z-index: -1;
+            @include cubic();
+        }
+        &.btn-red {
+            color: $red;
+            border: 2px solid $red;
+            &:before {
+                background: $red;
+            }
+        }
+        &:hover {
+            color: $white;
+            &:before {
+                width: 100%;
+                right: auto;
+                left: 0;
+            }
+        }
+    }
+}

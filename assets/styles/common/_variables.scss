@@ -1,0 +1,113 @@
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+// Colors
+$brand-primary:         #27ae60;
+
+// Colors
+$grey:                      #a7a7a7;
+$dark_blue:                 #03264f;
+$red:                       #cc886d;
+$light_blue:                #04357c;
+
+$charcoal:                  #565656;
+$light:                     #999999;
+$light_gray:                #d8d7d7;
+$pale:                      #f1f1f1;
+$white:                     #fff;
+
+@import url("//hello.myfonts.net/count/34bb52");
+
+@font-face {font-family: 'AstoriaClassicSans-Roman';src: url('../fonts/34BB52_0_0.eot');src: url('../fonts/34BB52_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/34BB52_0_0.woff2') format('woff2'),url('../fonts/34BB52_0_0.woff') format('woff'),url('../fonts/34BB52_0_0.ttf') format('truetype');}
+ 
+// Fonts
+
+@mixin heading() {
+    font-family: 'AstoriaClassicSans-Roman';
+}
+
+@mixin reg() {
+    font-family: 'Open Sans', sans-serif;
+    font-weight:  400;
+}
+@mixin semi() {
+    font-family: 'Open Sans', sans-serif;
+    font-weight:  600;
+}
+@mixin bold() {
+    font-family: 'Open Sans', sans-serif;
+    font-weight:  700;
+}
+@mixin black() {
+    font-family: 'Open Sans', sans-serif;
+    font-weight:  800;
+}
+
+// Easing
+
+@mixin easing() {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+} 
+
+@mixin slow_easing() {
+    -webkit-transition: all 0.8s ease-out;
+    -moz-transition: all 0.8s ease-out;
+    -o-transition: all 0.8s ease-out;
+    transition: all 0.8s ease-out;
+} 
+
+@mixin easing_med() {
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+} 
+
+@mixin cubic() {
+-webkit-transition: all 0.3s cubic-bezier(.17,.67,.53,.67); 
+   -moz-transition: all 0.3s cubic-bezier(.17,.67,.53,.67); 
+     -o-transition: all 0.3s cubic-bezier(.17,.67,.53,.67); 
+        transition: all 0.3s cubic-bezier(.17,.67,.53,.67); 
+}
+
+// Icons
+
+@mixin arrow_icon_white() {
+    background: url('../images/arrow-icon.svg') no-repeat center;
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+}
+
+@mixin arrow_icon_orange() {
+    background: url('../images/arrow-icon-orange.svg') no-repeat center;
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+}
+
+@mixin arrow_icon_lg() {
+    background: url('../images/arrow-icon.svg') no-repeat center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+}
+
+@mixin arrow_icon_lg_blue() {
+    background: url('../images/arrow-icon-blue.svg') no-repeat center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+}
+
+@mixin arrow_icon_lg_orange() {
+    background: url('../images/arrow-icon-orange.svg') no-repeat center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+}
+
