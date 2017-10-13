@@ -26,3 +26,22 @@ foreach ($sage_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+// Get Body Classes and append to space name to fire Barba
+function this_page() {
+    if (is_page('home')) { 
+        echo 'home';
+    } elseif (is_page('about')) {
+        echo 'about';
+    } elseif (is_single()) {
+        echo 'basic';
+    } elseif (is_archive('team')) {
+        echo 'team';
+    } elseif (is_page('solutions')) {
+        echo 'solutions';
+    } elseif (is_home('blog')) {
+        echo 'blog';
+    } else {
+        echo 'basic';
+    }
+}
