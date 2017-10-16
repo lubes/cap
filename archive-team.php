@@ -35,26 +35,27 @@
             </div>
         </div>
         <div class="row">
-            <?php while (have_posts()) : the_post(); ?>
-                <article <?php post_class('col-12 col-sm-12 col-md-4 col-lg-3 team-member inview-item team_category-all'); ?>>
-                    <a class="team-link" href="<?php the_permalink();?>">
-                        <figure class="bio-image">
-                            <img src="<?php echo the_post_thumbnail_url();?>" class="img-fluid" />
-                        </figure>
-                    </a>
-                    <header>
-                    <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                        <ul class="list-unstyled">
-                        <?php $terms = get_the_terms( $post->ID, 'team_category' ); foreach($terms as $term) { ?>
-                              <li><?php echo $term->name;?></li>
-                        <?php } ?>   
-                        </ul>
-                    </header>
-                    <div class="entry-summary">
-                        <?php the_excerpt(); ?>
-                    </div>
-                </article>
-            <?php endwhile; ?>
+        <?php while (have_posts()) : the_post(); ?>
+            <article <?php post_class('col-12 col-sm-12 col-md-4 col-lg-3 team-member inview-item team_category-all'); ?>>
+                <a class="team-link" href="<?php the_permalink();?>">
+                    <figure class="bio-image">
+                        <img src="<?php echo the_post_thumbnail_url();?>" class="img-fluid" />
+                        <img src="<?php echo the_field('hover_image');?>" class="img-fluid overlay-image" />
+                    </figure>
+                </a>
+                <header>
+                <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                    <ul class="list-unstyled">
+                    <?php $terms = get_the_terms( $post->ID, 'team_category' ); foreach($terms as $term) { ?>
+                        <li><?php echo $term->name;?></li>
+                    <?php } ?>   
+                    </ul>
+                </header>
+                <div class="entry-summary">
+                    <?php the_excerpt(); ?>
+                </div>
+            </article>
+        <?php endwhile; ?>
         </div>
     </div>
 </section>

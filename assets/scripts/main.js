@@ -2,6 +2,9 @@
 
 function global_functions() {
     
+    // Remove Dark from body class, appeneded at the Basic module
+    $('body').removeClass('dark');
+    
     // JavaScript to be fired on all pages
     $(document).on("scroll", function() {
         if($(document).scrollTop()>100) {
@@ -11,6 +14,14 @@ function global_functions() {
         }
     });  
 
+    // Hamburger
+    (function () {
+        $('.hamburger-menu').on('click', function() {
+            $('.bar').toggleClass('animate');
+            $('.menu-wrapper').toggleClass('open');
+        });
+    })();
+    
     // INVIEW Functions
     function inView( opt ) {
         if( opt.selector === undefined ) {
@@ -218,7 +229,13 @@ var BlogPage = Barba.BaseView.extend({
 var BasicPage = Barba.BaseView.extend({
     namespace: 'basic',
     onEnterCompleted: function() {
-
+        
+        if($('.page-header').hasClass('grey')) {
+            $('body').addClass('dark');
+        } else {
+            $('body').removeClass('dark');
+        }
+        
     }
 }); 
     
@@ -255,7 +272,6 @@ var FadeTransition = Barba.BaseTransition.extend({
     /**
      * this.oldContainer is the HTMLElement of the old Container
      */
-
         return $(this.oldContainer).animate({ opacity: 0 }).promise();
     
   },
@@ -268,7 +284,6 @@ var FadeTransition = Barba.BaseTransition.extend({
      */
       
         global_functions();   
-
         var _this = this;
         var $el = $(this.newContainer);
 

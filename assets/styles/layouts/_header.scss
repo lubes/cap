@@ -125,3 +125,90 @@
         }
     }    
 }
+
+@media (max-width: 1024px) {
+
+    $bar-width: 40px;
+    $bar-height: 2px;
+    $bar-spacing: 10px;
+
+    .hamburger-menu {
+        position: absolute;
+        top: 0;
+        left: auto;
+        right: 0;
+        bottom: auto;
+        margin: auto;
+        width: $bar-width;
+        height: $bar-height + $bar-spacing*2;
+        cursor: pointer;
+        z-index: 999;
+    }
+    .bar,
+    .bar:after,
+    .bar:before {
+        width: $bar-width;
+        height: $bar-height;
+    }
+    .bar {
+        position: relative;
+        transform: translateY($bar-spacing);
+        background: rgba(255, 255, 255, 1);
+        transition: all 0ms 300ms;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: $bar-spacing;
+            background: rgba(255, 255, 255, 1);
+            transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: $bar-spacing;
+            background: rgba(255, 255, 255, 1);
+            transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &.animate {
+            background: rgba(255, 255, 255, 0); 
+            &:after {
+                top: 0;
+                transform: rotate(45deg);
+                transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);     
+            }
+            &:before {
+                bottom: 0;
+                transform: rotate(-45deg);
+                transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+        }
+    }
+    
+    .menu-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: $dark_blue;
+        @include easing();
+        transform: translateX(100%);
+        .nav-primary {
+            float: none;
+            padding: 100px;
+            .nav {
+                display: block;
+                li {
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+        }
+        &.open {
+            transform: translateX(0%);
+        }
+    }
+    
+}

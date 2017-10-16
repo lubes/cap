@@ -1,5 +1,6 @@
 body {
     color: $charcoal;
+    background: $pale;
 }
 
 // Grid Overrides
@@ -29,6 +30,9 @@ p {
     @include reg();
     font-size: 18px;
     line-height: 26px;
+    &.italic {
+        font-style: italic;
+    }
 }
 
 a {
@@ -133,11 +137,11 @@ main, .main {
     }
 }
 
-
 // Page Header
 
 .page-header {
     position: relative;
+    @include easing();
     &.larger {
         height: 600px;
     }
@@ -287,6 +291,24 @@ main, .main {
     }
     .team-link {
         display: block;
+        .bio-image {
+            position: relative;verlay-image {
+                position: absolute;
+                top: 0;
+                left:0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+                @include easing();
+            }
+        }
+        &:hover {
+            .bio-image {
+                .overlay-image {
+                    opacity: 1;   
+                }
+            }
+        }
     }
 }
 // Team Bio
@@ -303,6 +325,12 @@ main, .main {
         font-size: 65px;
         line-height: 80px;
         white-space: nowrap;
+    }
+    .bio-image {
+        position: relative;
+        img {
+            width: 100%;
+        }
     }
     p {
         font-size: 19px;
@@ -373,6 +401,9 @@ main, .main {
         .footer-cta-text {
             color: $red;   
         }
+        &.no-pattern {
+            background: $light_gray;
+        }
     }
     &.blue-cta {
         background: url('../images/blue-pattern-bg.svg') no-repeat center;
@@ -414,7 +445,7 @@ main, .main {
                 }
             }
         }
-        &.orange {
+        &.red {
             span {
                 &:before {
                     @include arrow_icon_lg_orange();
@@ -426,6 +457,23 @@ main, .main {
             span {
                 &:before {
                     @include arrow_icon_lg_blue();
+                }
+            }
+        }
+        &.go-back {
+            span {
+                &:before {
+                    right: auto;
+                    left: -70px;
+                    transform: rotate(180deg);
+                }
+            }
+            &:hover {
+                span {
+                    &:before {
+                        right: auto;
+                        left: -90px;
+                    }
                 }
             }
         }
@@ -549,6 +597,11 @@ main, .main {
                 font-size: 24px;
                 line-height: 26px;
             }
+            h6 {
+                color: $dark_blue;
+                font-size: 19px;
+                @include bold();
+            }
             p {
                 font-size: 19px;
                 line-height: 30px;
@@ -558,6 +611,13 @@ main, .main {
                 line-height: 42px;
                 padding: 0 0 0 20px;
                 margin: 0 auto;
+            }
+            .icon {
+                max-width: 130px;
+                margin: 0 auto 60px;
+            }
+            &.smaller {
+                margin: 25px auto 0;
             }
         }
         
@@ -593,6 +653,7 @@ main, .main {
 
 .slider-wrap {
     position: relative; 
+    margin: 0 auto 90px;
     .timeline-slider {
         background: $red;
         color: $white;
@@ -602,13 +663,13 @@ main, .main {
                 display: block;
                 text-align: center;
                 font-size: 90px;
-                margin: 130px auto 0;
+                margin: 160px auto 0;
                 @include heading();
             }
             .timeline-entry {
                 margin: 70px auto 0;
                 .break {
-                    margin: 30px auto 35px 0;
+                    margin: 30px auto 55px 0;
                     display: block;
                 }
                 h5 {
@@ -632,12 +693,13 @@ main, .main {
         .slider-arrow {
             position: absolute;
             color: #fff;
-            font-size: 30px;
+            font-size: 24px;
             width: 30px;
             height: 30px;
             display: inline-block;
             line-height: 30px;
             cursor: pointer;
+            top: -2px;
             &.next {
                 right: 0;
                 i {

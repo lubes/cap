@@ -9,7 +9,7 @@ $email = get_field('email');
 $articles = get_field('related_articles');
 ?>
 
-<div class="page-header larger"></div>
+<div class="page-header <?php echo the_field('color');?> larger"></div>
 <section class="team-bio">
 <div class="container">
     <div class="row">
@@ -77,6 +77,6 @@ $articles = get_field('related_articles');
     </div>
 </div>
 </section>
-<a class="footer-cta" href="<?php echo site_url();?>/team">
-    <div class="footer-cta-text">Back to Team</div>
+<a class="footer-cta grey-cta no-pattern" href="<?php echo site_url();?>/team">
+    <div class="footer-cta-text red go-back"><span>Back to Team</span></div>
 </a>
