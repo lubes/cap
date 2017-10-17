@@ -109,6 +109,18 @@ main, .main {
     background-size: cover;
     position: relative;
     height: 100vh;
+    &:before {
+        position: absolute;
+        content:'';
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('../images/Home-Thin-Pattern_Path.svg') no-repeat center;
+        background-size: cover;
+    }
     .intro-entry {
         position: absolute;
         bottom: 25vh;
@@ -204,6 +216,10 @@ main, .main {
                 color: $white;
             } 
         }
+    }
+    &.about-pattern {
+        background: url('../images/about-pattern.svg') no-repeat center;
+        background-size: cover;   
     }
     &.red {
         // background: $red;
@@ -651,11 +667,36 @@ main, .main {
                 margin: 0 auto;
             }
             .icon {
-                max-width: 130px;
-                margin: 0 auto 60px;
+                margin: 0 auto;
             }
             &.smaller {
                 margin: 25px auto 0;
+            }
+            &.inview-item {
+                figure {
+                    opacity: 0;
+                    @include easing_med();
+                }
+                &.offset-2 {
+                    figure {
+                        transition-delay: 0.2s;
+                    }
+                }
+                &.offset-3 {
+                    figure {
+                        transition-delay: 0.4s;
+                    }
+                }
+                &.offset-4 {
+                    figure {
+                        transition-delay: 0.6s;
+                    }   
+                }
+                &.in-view {
+                    figure {
+                        opacity: 1;
+                    }
+                }
             }
         }
         
@@ -669,7 +710,7 @@ main, .main {
     }
     &.our-story {
         background: $white;
-        padding-bottom: 200px;
+        padding-bottom: 50px;
     }
     .el-animate {
         position: absolute;

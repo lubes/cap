@@ -22,6 +22,7 @@
             li {
                 margin-left: 30px;
                 @include easing();
+                /*
                 opacity: 0;
                 position: relative;
                 transform: translateY(-50px);
@@ -43,6 +44,7 @@
                 &:nth-child(6) {
                     transition-delay: 0.4s;
                 }
+                */
                 a {
                     color: $white;
                     display: block;
@@ -136,6 +138,7 @@
 }
 
 // Animate Links on Page Transition
+/*
 .enter {
     .banner {
         .nav-primary {
@@ -168,6 +171,7 @@
         }   
     }
 }
+*/
 
 // Home
 

@@ -127,7 +127,7 @@
             <div class="row">
                 <?php $i=0; while (have_rows('caprock_difference')):the_row(); $i++; ?>
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="about-entry smaller">
+                    <div class="about-entry smaller inview-item offset-<?php echo $i;?>">
                         <figure class="icon"><img src="<?php echo get_template_directory_uri();?>/dist/images/icon-<?php echo $i;?>.svg" class="img-fluid" /></figure>
                         <h6><?php echo the_sub_field('title');?></h6>
                         <p><?php echo the_sub_field('description');?></p>
