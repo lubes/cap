@@ -22,8 +22,8 @@
                 <div class="col col-12 col-sm-12 col-md-8 offset-md-1 col-lg-5">
                     <div class="home-block-entry">
                         <h1>Family Office <span></span> is the Right <span></span>Structure</h1>
-                        <p>We are an advocate to family decision-makers and assist you with the entirety of your wealth.</p>
-                        <a href="" class="btn btn-outline btn-red btn-icon">MORE ABOUT US</a>
+                        <p><?php echo the_field('home_entry_1');?></p>
+                        <a href="<?php echo site_url();?>/about" class="btn btn-outline btn-red btn-icon">MORE ABOUT US</a>
                     </div>
                 </div>
             </div>
@@ -44,8 +44,8 @@
                 <div class="col col-12 col-sm-12 col-lg-6 offset-lg-6">
                     <div class="home-block-entry">
                         <h1>Generate <span></span>Wealth That <span></span>Lasts Generations</h1>
-                        <p>We have wealth-sustaining solutions for your<br>family’s complex needs.</p>
-                        <a href="" class="btn btn-outline btn-red btn-icon">MORE ABOUT US</a>
+                        <p><?php echo the_field('home_entry_2');?></p>
+                        <a href="<?php echo site_url();?>/solutions" class="btn btn-outline btn-red btn-icon">SEE OUR SOLUTIONS</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 <div class="col col-12 col-sm-12 col-md-12 offset-md-1 col-lg-5">
                     <div class="home-block-entry">
                         <h1>Direct <span></span>Experience <span></span>Matters</h1>
-                        <p>Don’t settle for a single expert when you can have a<br>collection of them.</p>
+                        <p><?php echo the_field('home_entry_3');?></p>
                         <a href="<?php echo site_url();?>/team" class="btn btn-outline btn-red btn-icon">MEET THE TEAM</a>
                     </div>
                 </div>
