@@ -19,9 +19,9 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-15 col-md-5">
+                <div class="col col-12 col-sm-12 col-md-8 offset-md-1 col-lgmd-5">
                     <div class="home-block-entry">
-                        <h1>Family Office<br>is the Right Structure</h1>
+                        <h1>Family Office<br>is the Right<br>Structure</h1>
                         <p>We are an advocate to family decision-makers and assist you with the entirety of your wealth.</p>
                         <a href="" class="btn btn-outline btn-red btn-icon">MORE ABOUT US</a>
                     </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-15 col-md-5 offset-md-7">
+                <div class="col col-12 col-sm-12 col-lg-5 offset-lg-7">
                     <div class="home-block-entry">
                         <h1>Generate<br>Wealth That<br>Lasts Generations</h1>
                         <p>We have wealth-sustaining solutions for your<br>family’s complex needs.</p>
@@ -60,7 +60,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-15 col-md-5">
+                <div class="col col-12 col-sm-12 col-md-12 offset-md-1 col-lg-5">
                     <div class="home-block-entry">
                         <h1>Direct<br>Experience<br>Matters</h1>
                         <p>Don’t settle for a single expert when you can have a<br>collection of them.</p>

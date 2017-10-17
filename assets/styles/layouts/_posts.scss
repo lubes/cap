@@ -17,7 +17,6 @@
         height: calc(600px - 20px);
         width: 50%;
         width: calc(50% - 20px);
-        background: red;
         overflow: hidden;
         float: left;
         margin: 10px;
@@ -211,4 +210,88 @@
             opacity: 1;
         }
     }
+}
+
+// Pagination 
+
+.pagers {
+    text-align: center;
+    margin: 0 auto 240px;
+    .page-numbers {
+        color: $light;
+        @include semi();
+        font-size: 16px;
+        padding: 0 10px;
+        &.current {
+            color: $grey;
+        }
+        &.prev {
+            float: left;
+            color: $red;
+            position: relative;
+            padding-left: 40px;
+            .arrow {
+                position: absolute;
+                left: 0;
+                top: 4px;
+                transform: rotate(180deg);
+            }
+        }
+        &.next {
+            float: right;
+            color: $red;  
+            position: relative;
+            padding-right: 40px;
+            .arrow {
+                position: absolute;
+                right: 0;
+                top: 4px;
+            }
+        }
+    }
+    .nav-links {
+        width: 100%;
+    }
+    .arrow {
+        @include arrow_icon_orange();
+        display: inline-block;
+    }
+}
+
+// Tablet
+
+@media (max-width: 768px) {
+ 
+    .searchform {
+        width: 100%;
+    }
+    .post-blocks {
+        .post-block {
+            display: block;
+            height: 600px;
+            width: 100%;
+            width: calc(100% - 20px);
+            background: red;
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            position: relative;
+            &:nth-child(2), &:nth-child(5) {
+                width: 100%;
+                width: calc(100% - 20px);
+                height:300px;
+                height: calc(300px - 20px);
+            }
+            &:nth-child(3), &:nth-child(4), &:nth-child(7), &:nth-child(8) {
+                width: 50%;
+                width: calc(50% - 20px);
+                height:300px;
+                height: calc(300px - 20px);
+            } 
+            &:nth-child(6) {
+                float: right;
+            }
+        } 
+    }
+    
 }

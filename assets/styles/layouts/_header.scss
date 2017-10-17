@@ -126,17 +126,70 @@
     }    
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
 
-    $bar-width: 40px;
-    $bar-height: 2px;
-    $bar-spacing: 10px;
+    .home {
+        .banner {
+            top: 0;
+            padding: 0;
+            &.smaller {
+                position: absolute;
+            }
+            .brand {
+                display: none;
+            }
+        }
+        .hamburger-menu {
+            top: 50px;
+        }
+    }    
+    
+    .banner {
+        position: absolute;
+        padding: 40px 0 0;
+        &.smaller {
+            position: absolute;
+        }
+    }
+    
+    .search, .blog, .dark {
+        .bar {
+            background: rgba(3, 37, 80, 1);
+            &:before {
+                background: rgba(3, 37, 80, 1);
+            }
+            &:after {
+                background: rgba(3, 37, 80, 1);
+            }
+            &.animate {
+                background: rgba(3, 37, 80, 0); 
+                &:before, &:after {
+                    background: rgba(255, 255, 255, 1);
+                }
+            }
+        }
+        .banner {
+            .nav-primary {
+                ul {
+                    li {
+                        a {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    $bar-width: 25px;
+    $bar-height: 3px;
+    $bar-spacing: 8px;
 
     .hamburger-menu {
         position: absolute;
-        top: 0;
+        top: 20px;
         left: auto;
-        right: 0;
+        right: 30px;
         bottom: auto;
         margin: auto;
         width: $bar-width;
@@ -193,16 +246,39 @@
         left: 0;
         bottom: 0;
         background: $dark_blue;
-        @include easing();
+        @include cubic();
         transform: translateX(100%);
         .nav-primary {
             float: none;
-            padding: 100px;
+            padding: 160px 0 0;
+            width: 240px;
+            margin: 0 auto;
             .nav {
                 display: block;
                 li {
                     display: block;
                     margin: 0 auto;
+                    a {
+                        font-size: 55px;
+                        line-height: 68px;
+                        @include heading();
+                        text-transform: none;
+                        font-weight: lighter;
+                        &:hover, &:focus {
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                    &.current_page_item {
+                        a {
+                            color: $red;
+                            letter-spacing: 0;
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -210,5 +286,5 @@
             transform: translateX(0%);
         }
     }
-    
 }
+

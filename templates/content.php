@@ -1,4 +1,4 @@
-<article <?php post_class( 'post-block col-12 col-sm-12 col-md-6 inview-item category-all'); ?>>
+<article <?php post_class( 'post-block col-12 col-sm-12 col-md-12 col-lg-6 inview-item category-all'); ?>>
     <div class="post-content-meta dark">      
         <p><?php $term_list = wp_get_post_terms($post->ID, 'category');echo $term_list[0]->name ;?> / <?php the_time('m.d.Y') ?></p>
     </div>

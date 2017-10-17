@@ -13,7 +13,6 @@ body {
     }
 }
 
-
 h1 {
     @include heading();
 }
@@ -77,7 +76,7 @@ main, .main {
     height: 100vh;
     .intro-entry {
         position: absolute;
-        bottom: 250px;
+        bottom: 25vh;
         left: 0;
         right: 0;
         .intro-logo {
@@ -824,3 +823,67 @@ main, .main {
     padding: 100px 0 25vh;
 }
 
+// Tablet Portrat 
+
+@media (max-width: 768px) {
+    
+    .intro {
+        // @include med_container();
+        .intro-entry {
+            bottom: 30vh;
+            h1 {
+                font-size: 88px;
+                line-height: 94px;
+            }
+            .intro-logo {
+                width: 240px;
+            }
+        }
+    }
+    .home-body {
+        padding: 75px 0;
+        width: 100% !important;
+        overflow-x: hidden;
+        .animate-el {
+            position: relative;
+            width: 600px;
+            right: auto;
+            margin: 0 0 0 auto;
+            .static-img {
+                max-width: 600px;
+            }
+            &.el-2 {
+                height: 300px;
+                .animated-arrows {
+                    left: -300px;
+                    width: 700px; 
+                }
+            }
+        }
+        .home-block {
+            margin: 75px auto 150px;
+            .home-block-entry {
+                margin: 75px auto 0 15px;
+                h1 {
+                    font-size: 60px;
+                    line-height: 65px;
+                }
+            }
+        }
+    }
+    .page-header {
+        .page-header-entry {
+            h1 {
+                font-size: 65px;
+                line-height: 80px;
+            }
+        }
+    }
+    .filter-col {
+        li {
+            font-size: 13px;
+            line-height: 28px;
+        }
+    }
+    
+}

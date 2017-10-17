@@ -2,23 +2,23 @@
 <div class="container">
     <div class="articles-header">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-6">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <form role="search" method="get" id="searchform" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <input type="text" placeholder="Search" value="<?php echo get_search_query(); ?>" name="s" id="s" class="form-control" />
                     <input class="btn btn-none" type="submit" id="searchsubmit" value="<?php echo esc_attr_x( '', 'submit button' ); ?>" />
                 </form>                
             </div>
-            <div class="col-12 col-sm-12 col-md-4 offset-md-2">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="post-filters">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <ul class="filter-col list-unstyled">
                                 <li><a class="active filter-link" data-filter="all">EVERYTHING</a></li>
                                 <li><a class="filter-link" data-filter="press">PRESS</a></li>
                                 <li><a class="filter-link" data-filter="insights">INSIGHTS</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <ul class="filter-col list-unstyled">
                                 <li><a class="filter-link" data-filter="company-news">COMPANY NEWS</a></li>
                                 <li><a class="filter-link" data-filter="impact-investing">IMPACT INVESTING</a></li>
