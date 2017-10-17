@@ -226,9 +226,9 @@
             color: $grey;
         }
         &.prev {
-            float: left;
+            position: absolute;
+            left: 35px;
             color: $red;
-            position: relative;
             padding-left: 40px;
             .arrow {
                 position: absolute;
@@ -238,9 +238,9 @@
             }
         }
         &.next {
-            float: right;
+            position: absolute;
+            right: 35px;
             color: $red;  
-            position: relative;
             padding-right: 40px;
             .arrow {
                 position: absolute;

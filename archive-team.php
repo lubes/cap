@@ -6,8 +6,8 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="filter-header">
+    <div class="filter-header">
+        <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-6">
                     <p>Before we get to know your family, come get to know ours. You’ll find our expertise is as diverse as our portfolios.</p>
@@ -34,9 +34,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div class="row">
         <?php while (have_posts()) : the_post(); ?>
-            <article <?php post_class('col-12 col-sm-12 col-md-4 col-lg-3 team-member inview-item team_category-all'); ?>>
+            <article <?php post_class('col-6 col-sm-6 col-md-4 col-lg-3 team-member inview-item team_category-all'); ?>>
                 <a class="team-link" href="<?php the_permalink();?>">
                     <figure class="bio-image">
                         <img src="<?php echo the_post_thumbnail_url();?>" class="img-fluid" />

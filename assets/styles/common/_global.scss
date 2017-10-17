@@ -13,6 +13,42 @@ body {
     }
 }
 
+// Animate Page on Transition
+
+.wrap, .content-info {
+    opacity: 0;
+    @include easing();
+}
+.enter {
+    .wrap, .content-info {
+        opacity: 1;
+    }
+}
+
+/*
+.overlay-wrap {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: $dark_blue;
+    z-index: 99999;
+    @include cubic();
+}
+
+.enter {
+    .overlay-wrap {
+        height: 0%;   
+        top: 0;
+        bottom: auto;
+    }
+}
+*/
+
+// Fonts
+
 h1 {
     @include heading();
 }
@@ -70,7 +106,6 @@ main, .main {
 // Intro
 
 .intro {
-    background: url('../images/hero-1.jpg') no-repeat center;
     background-size: cover;
     position: relative;
     height: 100vh;
@@ -291,14 +326,15 @@ main, .main {
     .team-link {
         display: block;
         .bio-image {
-            position: relative;verlay-image {
+            position: relative;
+            .overlay-image {
                 position: absolute;
                 top: 0;
                 left:0;
                 right: 0;
                 bottom: 0;
                 opacity: 0;
-                @include easing();
+                // @include easing();
             }
         }
         &:hover {
@@ -511,6 +547,9 @@ main, .main {
                 color: $light_blue;
                 white-space: nowrap;
                 margin: 0 auto 20px;
+                span {
+                    display: block;
+                }
             }
             p {
                 color: $charcoal;
@@ -875,7 +914,7 @@ main, .main {
         .page-header-entry {
             h1 {
                 font-size: 65px;
-                line-height: 80px;
+                line-height: 70px;
             }
         }
     }
@@ -885,5 +924,180 @@ main, .main {
             line-height: 28px;
         }
     }
+    .about-wrap {
+        padding-top: 160px;
+        padding-bottom: 100px;
+        .el-animate {
+            &.el-2 {
+                right: -10%;
+                top: 200px;
+            }
+        }
+        .about-title {
+            h1 {
+                font-size: 60px;
+                line-height: 70px;
+            }
+        }
+        .about-block {
+            padding: 0 0 75px;
+            .about-entry {
+                margin: 70px auto 0;
+            }
+        }
+    }
+    .footer-cta {
+        height: 335px;
+        .footer-cta-text {
+            font-size: 60px;
+            line-height: 1;
+            span {
+                &:before {
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+
+// Phone Portait
+
+@media (max-width: 575px) {
     
+    .container {
+        padding-right: 30px;
+        padding-left: 30px;
+    }    
+
+    .intro {
+        .intro-entry {
+            h1 {
+                font-size: 58px;
+                line-height: 64px;
+                height: 64px;
+            }
+            .intro-logo {
+                width: 200px;
+            }
+            .animated-line {
+                left:100px;
+                bottom: -270px;
+            }
+            &.ready {
+                .animated-line {
+                    height: 250px;
+                }
+            }
+        }
+    }
+    .home-body {
+        padding: 50px 0;
+        .animate-el {
+            width: 90%;
+            .static-img {
+                margin: 0 0 0 auto;
+            }
+            &.el-2 {
+                height: 200px;
+                .animated-arrows {
+                    left: -120px;
+                    width: 450px;
+                }
+            }
+        }
+        .home-block, .home-block:last-child {
+            margin: 50px auto 75px;
+            .home-block-entry {
+                margin: 75px auto;
+                h1 {
+                    font-size: 50px;
+                    line-height: 55px;
+                    white-space: inherit;
+                    span {
+                        display: none;
+                    }
+                }
+                p {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+    .page-header {
+        .page-header-entry {
+            h1 {
+                font-size: 50px;
+                line-height: 54px;
+                /* Comps / Breaks at iphone 6
+                font-size: 54px;
+                line-height: 59px;
+                */ 
+            }
+        }
+        &.smaller {
+            height: 485px;
+        }
+    }
+    .footer-cta {
+        height: 280px;
+        .footer-cta-text {
+            font-size: 40px;
+            line-height: 1;
+            span {
+                &:before {
+                    width: 40px !important;
+                    height: 40px !important;
+                    top: 50px;
+                    left: 50%;
+                    margin-left: -20px;
+                }
+            }
+        }
+    }
+    .about-wrap {
+        width: 100% !important;
+        overflow-x: hidden !important;
+        padding-top: 100px;
+        padding-bottom: 0;
+        &.our-story {
+            padding-bottom: 50px;
+        }
+        .el-animate {
+            &.el-2 {
+                right: -20%;
+            }
+        }
+        .about-title {
+            h1 {
+                font-size: 50px;
+            }
+        }
+        .about-block {
+            .about-entry {
+                margin: 25px auto 0;
+                .break {
+                    margin: 15px auto 20px 0;
+                }
+                h5 {
+                    font-size: 19px;
+                }
+                p, ul {
+                    font-size: 16px;
+                    line-height: 24px;
+                    li {
+                        margin: 0 auto 15px;
+                    }
+                }
+            }
+        }
+    }
+    .team-member {
+        .entry-title  {
+            a {
+                font-size: 13px;
+                line-height: 15px;
+            }
+        }
+    }
 }

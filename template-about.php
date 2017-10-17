@@ -18,10 +18,10 @@
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/arrow.svg" class="img-fluid" /></figure>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-4">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                     <div class="about-title"><h1>Our Vision</h1></div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-8">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                     <div class="about-entry">
                         <h5>GUIDING PRINCIPLES</h5>
                         <span class="break red-break"></span>
@@ -35,7 +35,7 @@
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/arrow-burst.svg" class="img-fluid" /></figure>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-7">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7">
                     <div class="about-entry">
                         <h5>EVOLUTION OF THE FAMILY OFFICE</h5>
                         <span class="break red-break"></span>
@@ -46,7 +46,7 @@
         </div>
         <div class="about-block">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-7 offset-md-4">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7 offset-lg-4">
                     <div class="about-entry">
                         <h5>WE’RE ADVOCATES, NOT SALESPEOPLE</h5>
                         <span class="break red-break"></span>
@@ -65,10 +65,10 @@
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/c-mark.svg" class="img-fluid" /></figure>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-4">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                     <div class="about-title"><h1>Our Story</h1></div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-8">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                     <div class="about-entry">
                         <?php echo the_field('story_entry');?>
                     </div>

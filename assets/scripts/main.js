@@ -127,6 +127,19 @@ var Homepage = Barba.BaseView.extend({
                 $(".banner").removeClass("smaller");
             }
         });  
+        
+        // Display Different Images on Page Load
+        var description = [
+          "./wp-content/themes/caprock/dist/images/Home_Navy_OceanWave.jpg",
+          "./wp-content/themes/caprock/dist/images/Home_Navy_MountainFog.jpg"
+        ];
+        var size = description.length
+        var x = Math.floor(size*Math.random())
+        var randomImg = description[x];
+        $('.intro').css("background-image", "url("+ randomImg +")");  
+
+        
+        
     },
     onEnterCompleted: function() {
         parallax();
@@ -253,70 +266,42 @@ BlogPage.init();
 AboutPage.init();
 BasicPage.init();
 SearchResults.init();
-              
-var FadeTransition = Barba.BaseTransition.extend({
-  start: function() {
-    /**
-     * This function is automatically called as soon the Transition starts
-     * this.newContainerLoading is a Promise for the loading of the new container
-     * (Barba.js also comes with an handy Promise polyfill!)
-     */
 
-    // As soon the loading is finished and the old page is faded out, let's fade the new page
-    Promise
-      .all([this.newContainerLoading, this.fadeOut()])
-      .then(this.fadeIn.bind(this));
-  },
+var HideShowTransition = Barba.BaseTransition.extend({
+    start: function () {
+        Promise
+        .all([
+            this.newContainerLoading,
+            this.startOverlay()
+        ])
+        .then(this.finish.bind(this));
+    },
+    startOverlay: function () {
 
-  fadeOut: function() {
-    /**
-     * this.oldContainer is the HTMLElement of the old Container
-     */
-        return $(this.oldContainer).animate({ opacity: 0 }).promise();
-    
-  },
+        $('body').removeClass('enter');
 
-  fadeIn: function() {
-    /**
-     * this.newContainer is the HTMLElement of the new Container
-     * At this stage newContainer is on the DOM (inside our #barba-container and with visibility: hidden)
-     * Please note, newContainer is available just after newContainerLoading is resolved!
-     */
-      
-        global_functions();   
-        var _this = this;
-        var $el = $(this.newContainer);
+        return $(this.oldContainer).animate({
+            opacity: 1
+        }).delay(2000).promise();
+    },
+    finish: function () {
 
-        $(this.oldContainer).hide();
+        global_functions();
+
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-   
-    
-    $el.animate({ opacity: 1 }, 400, function() {
-      /**
-       * Do not forget to call .done() as soon your transition is finished!
-       * .done() will automatically remove from the DOM the old Container
-       */
 
-      _this.done();
-    });
-  }
+        this.done();
+
+        $('body').addClass('enter');
+
+    }
 });
 
-/**
- * Next step, you have to tell Barba to use the new Transition
- */
-
 Barba.Pjax.getTransition = function() {
-  /**
-   * Here you can use your own logic!
-   * For example you can use different Transition based on the current page or link...
-   */
+    return HideShowTransition;
+};
+Barba.Pjax.init();
+Barba.Prefetch.init();
 
-  return FadeTransition;
-};    
-    
-Barba.Pjax.start();    
-
-    
 
 })(jQuery);
