@@ -1,6 +1,5 @@
 body {
     color: $charcoal;
-    background: $pale;
 }
 
 // Grid Overrides
@@ -15,34 +14,102 @@ body {
 
 // Animate Page on Transition
 
-.wrap, .content-info {
-    opacity: 0;
-    @include easing();
+.wrap {
+    background: $pale;
 }
-.enter {
+
+.wrap, .content-info {
+    opacity: 1;
+    @include easing_med();
+    transition-delay: 0s;
+}
+
+.leave {
     .wrap, .content-info {
-        opacity: 1;
+        // opacity: 0;
     }
+}
+
+/*
+.wrap {
+    h1, h2, h3, h4, h5, p, img, figure, ul, li, span, form, a {
+        opacity: 1;
+        @include easing_med();
+        transition-delay: 0.5s;
+    }
+}
+
+.leave {
+    .wrap {
+        opacity: 0;
+        @include easing();
+        transition-delay: 1s;
+        h1, h2, h3, h4, h5, p, img, figure, ul, li, span, form, a {
+            opacity: 0;
+            @include easing_med();
+            transition-delay: 0.2s;
+        }
+    }
+}
+*/
+
+.leave {
+    .page-header {
+        opacity: 0;
+        @include easing_med();
+        transition-delay: 0.1s;
+        h1 {
+            opacity: 0;
+            @include easing_med();
+            transition-delay: 0.25s;
+        }
+    }
+    .page-wrapper {
+        opacity: 0;
+        @include easing_med();
+    }
+}
+
+.page-header {
+    opacity: 1;
+    @include easing_med();
+    transition-delay: 0s;
+    h1 {
+        opacity: 1;
+        @include easing_med();
+        transition-delay: 0.25s;
+    }
+}
+
+.page-wrapper {
+    opacity: 1;
+    @include easing_med();
+    transition-delay: 0.5s;
 }
 
 /*
 .overlay-wrap {
     position: fixed;
-    top: auto;
-    bottom: 0;
+    top: 0;
+    bottom: auto;
     left: 0;
     right: 0;
     height: 100%;
     background: $dark_blue;
     z-index: 99999;
     @include cubic();
+    opacity: 0;
+    z-index: -99;
 }
 
-.enter {
+.leave {
     .overlay-wrap {
-        height: 0%;   
-        top: 0;
-        bottom: auto;
+        height: 100%;   
+        top: auto;
+        bottom: 0;
+        opacity: 1;
+        transition-delay: 0.2s;
+        z-index: 999999;
     }
 }
 */
@@ -135,10 +202,13 @@ main, .main {
             font-size: 100px;
             line-height: 105px;
             margin: 0 auto;
+            transform: translateY(50px);
+            opacity: 0;
+            @include easing_med();
+            /*
             height: 105px;
             overflow: hidden;
             position: relative;
-            margin: 0 auto;
             span {
                 position: absolute;
                 top: 0;
@@ -151,6 +221,7 @@ main, .main {
                     transition-delay: 0.1s;
                 }
             }
+            */
         }
         .animated-line {
             position: absolute;
@@ -172,8 +243,10 @@ main, .main {
                 opacity: 1;
             }
             h1 {
+                transform: translateY(0);
+                opacity: 1;
                 span {
-                    transform: translateY(0);
+                    // transform: translateY(0);
                 }
             }
             .animated-line {
@@ -223,8 +296,8 @@ main, .main {
     }
     &.red {
         // background: $red;
-        background: url('../images/team-bg.svg') no-repeat center;
-        background-size: cover;
+        background: url('../images/profile/Profile-Copper-Pattern.svg') no-repeat center;
+        background-size: cover; 
         .page-header-entry {
             h1 {
                 color: $white;
@@ -250,6 +323,43 @@ main, .main {
             color: $light_blue;
         }   
     }
+    
+    // Profile Header
+    &.team-header {
+        &.dark_blue {
+            background: url('../images/profile/Profile-Navy-Pattern.svg') no-repeat center;
+            background-size: cover; 
+        }
+        &.red {
+            background: url('../images/profile/Profile-Copper-Pattern.svg') no-repeat center;
+            background-size: cover; 
+        }
+        &.grey {
+            background: url('../images/profile/Profile-Gray-Pattern.svg') no-repeat center;
+            background-size: cover;   
+        }
+    }
+    
+    // Articles Headers
+    &.article-header {
+        &.dark_blue {
+            background: url('../images/article/Article-Navy-Pattern.svg') no-repeat center;
+            background-size: cover; 
+        }
+        &.red {
+            background: url('../images/article/Article-Copper-Pattern.svg') no-repeat center;
+            background-size: cover; 
+        }
+        &.grey {
+            background: url('../images/article/Article-Gray-Pattern.svg') no-repeat center;
+            background-size: cover;   
+        }
+        &.light_blue {
+            background: url('../images/article/Article-Cobalt-Pattern.svg') no-repeat center;
+            background-size: cover;   
+        }
+    }
+     
 }
 
 // Post Format
@@ -293,6 +403,7 @@ main, .main {
         a, a:not([href]):not([tabindex]) {
             cursor: pointer;
             color: $light;
+            white-space: nowrap;
             &.contact-link {
                 color: $dark_blue;
             }
@@ -343,20 +454,29 @@ main, .main {
         display: block;
         .bio-image {
             position: relative;
-            .overlay-image {
+            img {
+                -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+                filter: grayscale(100%);
+                @include easing_med();
+            }
+            &:before {
+                content:'';
                 position: absolute;
                 top: 0;
-                left:0;
                 right: 0;
                 bottom: 0;
-                opacity: 0;
-                // @include easing();
+                left: 0;
+                background: rgba(0,0,0,0.1);
+                z-index: 1;
+                @include easing();
             }
-        }
-        &:hover {
-            .bio-image {
-                .overlay-image {
-                    opacity: 1;   
+            &:hover {
+                img {
+                    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+                    filter: grayscale(0%);
+                }
+                &:before {
+                    background: rgba(0,0,0,0);
                 }
             }
         }
@@ -381,6 +501,20 @@ main, .main {
         position: relative;
         img {
             width: 100%;
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+            @include easing_med();
+        }
+        &:before {
+            content:'';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+            @include easing();
         }
     }
     p {
@@ -445,28 +579,35 @@ main, .main {
 .footer-cta {
     position: relative;
     display: block;
-    height: 350px;
+    height: 435px;
     &.grey-cta {
-        background: url('../images/grey-pattern.svg') no-repeat center;
+        background: url('../images/profile/Profile-Gray-Pattern.svg') no-repeat center;
         background-size: cover;
         .footer-cta-text {
-            color: $red;   
+            color: $red;    
         }
         &.no-pattern {
             background: $light_gray;
         }
     }
     &.blue-cta {
-        background: url('../images/blue-pattern-bg.svg') no-repeat center;
+        background: url('../images/profile/Profile-Navy-Pattern.svg') no-repeat center;
         background-size: cover;
         .footer-cta-text {
             color: $white;   
         }
     }
     &.red-cta {
-        background: $red;
+        background: url('../images/profile/Profile-Copper-Pattern.svg') no-repeat center;
+        background-size: cover; 
         .footer-cta-text {
             color: $white;   
+        }
+    }
+    &.smaller {
+        height: 350px;
+        &.red-cta {
+            background: $red;   
         }
     }
     .footer-cta-text {
@@ -550,11 +691,11 @@ main, .main {
 // Homepage
  
 .home-body {
-    padding: 150px 0;
+    padding: 150px 0 210px; 
     background: $pale;
     position: relative;
     .home-block {
-        margin: 100px auto 300px;
+        margin: 100px auto 350px;
         position: relative;
         .home-block-entry {
             h1 {
@@ -581,17 +722,19 @@ main, .main {
     .animate-el {
         position: absolute;
         right: 0;
-        top: 0;
+        top: -50px;
+        width: 780px;
+        height: 100%;
         .static-img {
-            max-width: 600px;
+            max-width: 780px;
         }
         &.el-2 {
             right: auto;
             left: 0;
             .animated-arrows {
-                width: 800px;
+                width: 920px;
                 height: 600px;
-                left: -80px;
+                left: -150px;
                 .anim-arrow  {
                     position: absolute;
                     opacity: 0;
@@ -611,7 +754,7 @@ main, .main {
                         opacity: 1;
                     }
                 }
-            }
+            } 
         }
     }
     .overlay-block {
@@ -624,10 +767,25 @@ main, .main {
         height: auto;
         opacity: 0.75;
         &.blue {
-            background: $light_blue;
+            background-color: $light_blue;
         }
         &.red {
             background: $red;
+        }
+    }
+}
+ 
+@media (max-width: 1500px) {
+    .home-body {
+        .animate-el {
+            .static-img {
+                max-width: 680px;
+            }
+            &.el-2 {
+                .animated-arrows {
+                    width: 820px;
+                }
+            }
         }
     }
 }
@@ -699,7 +857,6 @@ main, .main {
                 }
             }
         }
-        
     }
     .about-title {
         h1 {
@@ -710,19 +867,20 @@ main, .main {
     }
     &.our-story {
         background: $white;
-        padding-bottom: 50px;
+        padding-bottom: 200px;
     }
     .el-animate {
         position: absolute;
-        width: 400px;
-        height: 400px;
+        width: 480px;
+        height: 100%;
         top: 0;
         &.el-1 {
             left: 70px;
             top: -100px; 
+            width: 420px;
         }
         &.el-2 {
-            right: 15%;
+            right: 10%;
             top: 100px; 
         }
     }
@@ -1138,6 +1296,27 @@ main, .main {
             a {
                 font-size: 13px;
                 line-height: 15px;
+            }
+        }
+    }
+    .location {
+        height: 400px;
+        margin: 0 auto 130px;
+        .location-entry {
+            top: auto;
+            left: 20px;
+            right: 20px;
+            bottom: -100px;
+            width: auto;
+            padding: 30px;
+            .location-title {
+                font-size: 18px;
+                line-height: 24px;
+            }
+            p {
+                line-height: 22px;
+                font-size: 16px;
+
             }
         }
     }

@@ -5,11 +5,13 @@ $employee_bio = get_field('employee_bio');
 $employee_background = get_field('employee_background');
 $responsibilities = get_field('responsibilities');
 $linkedin = get_field('linked_in');
+$twitter = get_field('twitter');
 $email = get_field('email');
 $articles = get_field('related_articles');
 ?>
 
-<div class="page-header <?php echo the_field('color');?> larger"></div>
+<div class="page-header team-header <?php echo the_field('color');?> larger"></div>
+<div class="page-wrapper">
 <section class="team-bio">
 <div class="container">
     <div class="row">
@@ -20,7 +22,7 @@ $articles = get_field('related_articles');
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-5">
                             <figure class="bio-image">
-                                <img src="<?php echo the_post_thumbnail_url();?>" class="img-fluid" />
+                                <img src="<?php echo the_field('hover_image');?>" class="img-fluid" />
                             </figure>
                         </div>
                         <div class="col-12 col-sm-12 col-md-7">
@@ -29,6 +31,9 @@ $articles = get_field('related_articles');
                             <ul class="employee-socials list-unstyled">
                                 <?php if($linkedin):?>
                                     <li><a href="<?php echo $linkedin;?>" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <?php endif;?>
+                                <?php if($twitter):?>
+                                    <li><a href="<?php echo $twitter;?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                                 <?php endif;?>
                                 <?php if($email):?>
                                     <li><a href="mailto:<?php echo $email;?>" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
@@ -77,6 +82,7 @@ $articles = get_field('related_articles');
     </div>
 </div>
 </section>
-<a class="footer-cta grey-cta no-pattern" href="<?php echo site_url();?>/team">
+<a class="footer-cta grey-cta smaller no-pattern" href="<?php echo site_url();?>/team">
     <div class="footer-cta-text red go-back"><span>Back to Team</span></div>
 </a>
+</div>

@@ -1,4 +1,5 @@
 <?php get_template_part('templates/page', 'header'); ?>
+<div class="page-wrapper">
 <?php get_template_part('templates/blog'); ?>
 <div class="container">
     <div class="pagers">
@@ -8,4 +9,5 @@
             'next_text' => __( 'NEXT  <span class="arrow arrow-right">', 'textdomain' ),
         ) ); ?>
     </div>
+</div>
 </div>

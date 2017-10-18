@@ -136,13 +136,14 @@ var Homepage = Barba.BaseView.extend({
         var size = description.length
         var x = Math.floor(size*Math.random())
         var randomImg = description[x];
-        $('.intro').css("background-image", "url("+ randomImg +")");  
-
-        
+        $('.intro').css("background-image", "url("+ randomImg +")");
         
     },
     onEnterCompleted: function() {
         parallax();
+    },
+    onLeave: function() {
+        $('.intro-entry').removeClass('ready');
     }
 });
 var TeamPage = Barba.BaseView.extend({
@@ -278,11 +279,12 @@ var HideShowTransition = Barba.BaseTransition.extend({
     },
     startOverlay: function () {
 
-        $('body').removeClass('enter');
+        $('body').addClass('leave');
 
         return $(this.oldContainer).animate({
             opacity: 1
-        }).delay(2000).promise();
+        }).delay(100).promise();
+        
     },
     finish: function () {
 
@@ -292,7 +294,7 @@ var HideShowTransition = Barba.BaseTransition.extend({
 
         this.done();
 
-        $('body').addClass('enter');
+        $('body').removeClass('leave');
 
     }
 });

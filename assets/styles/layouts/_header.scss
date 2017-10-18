@@ -138,6 +138,13 @@
 }
 
 // Animate Links on Page Transition
+
+.leave {
+    .banner {
+        top: -100px;
+    }
+}
+
 /*
 .enter {
     .banner {

@@ -11,6 +11,7 @@
         </div>
     </div>
 </div>
+<div class="page-wrapper">
 <section class="about-wrap" id="capabilities">
     <div class="container">
         <div class="page-nav">
@@ -204,11 +205,10 @@
         </div>
     </div>
 </section>
-
 <?php while (have_posts()) : the_post(); ?>
   <?php get_template_part('templates/content', 'page'); ?>
 <?php endwhile; ?>
-
 <a class="footer-cta grey-cta" href="<?php echo site_url();?>/articles">
     <div class="footer-cta-text blue"><span>Read the Articles</span></div>
 </a>
+</div>

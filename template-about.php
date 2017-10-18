@@ -11,6 +11,7 @@
         </div>
     </div>
 </div>
+<div class="page-wrapper">
 <section class="about-wrap">
     <div class="container">
         <div class="about-block">
@@ -21,7 +22,7 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                     <div class="about-title"><h1>Our Vision</h1></div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7">
                     <div class="about-entry">
                         <h5>GUIDING PRINCIPLES</h5>
                         <span class="break red-break"></span>
@@ -35,7 +36,7 @@
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/arrow-burst.svg" class="img-fluid" /></figure>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-7">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                     <div class="about-entry">
                         <h5>EVOLUTION OF THE FAMILY OFFICE</h5>
                         <span class="break red-break"></span>
@@ -46,7 +47,7 @@
         </div>
         <div class="about-block">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-7 offset-lg-4">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 offset-lg-4">
                     <div class="about-entry">
                         <h5>WE’RE ADVOCATES, NOT SALESPEOPLE</h5>
                         <span class="break red-break"></span>
@@ -85,3 +86,4 @@
 <a class="footer-cta red-cta" href="<?php echo site_url();?>/team">
     <div class="footer-cta-text white"><span>Meet the Team</span></div>
 </a>
+</div>

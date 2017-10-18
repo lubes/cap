@@ -1,25 +1,35 @@
 <section class="intro">
     <div class="intro-entry">
         <div class="container">
-            <figure class="intro-logo">
-                <img src="<?php echo get_template_directory_uri();?>/dist/images/caprock_logo.svg" class="img-fluid" />
-            </figure>
-            <h1><span>Rethinking</span></h1><h1><span>Wealth</span></h1>
-            <div class="animated-line"></div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-5 offset-lg-1">
+                    <figure class="intro-logo">
+                        <img src="<?php echo get_template_directory_uri();?>/dist/images/caprock_logo.svg" class="img-fluid" />
+                    </figure>
+                    <h1><span>Rethinking</span></h1><h1><span>Wealth</span></h1>
+                    <div class="animated-line"></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+<div class="page-wrapper">
 <section class="home-body">
     <div class="home-block">
         <div class="animate-el el-1">
             <figure class="static-img">
+                <div class="p_el" data-scroll="-10">
+                    <img  src="<?php echo get_template_directory_uri();?>/dist/images/Home_Overlay_Building.jpg" class="img-fluid" />
+                </div>
+                <!--
                 <div class="p_el overlay-block blue" data-scroll="-10"></div>
                 <img src="<?php echo get_template_directory_uri();?>/dist/images/home-img-1.jpg" class="img-fluid" />
+                -->
             </figure>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-12 col-md-8 offset-md-1 col-lg-5">
+                <div class="col col-12 col-sm-12 col-md-8 col-lg-5">
                     <div class="home-block-entry">
                         <h1>Family Office <span></span> is the Right <span></span>Structure</h1>
                         <p><?php echo the_field('home_entry_1');?></p>
@@ -54,13 +64,15 @@
     <div class="home-block">
         <div class="animate-el el-1">
             <figure class="static-img">
-                <div class="p_el overlay-block red" data-scroll="-10"></div>
-                <img src="<?php echo get_template_directory_uri();?>/dist/images/home-img-1.jpg" class="img-fluid" />
+                <!--<div class="p_el overlay-block red" data-scroll="-10"></div>-->
+                <div class="p_el" data-scroll="-10">
+                    <img  src="<?php echo get_template_directory_uri();?>/dist/images/Home_Overlay_Golf.jpg" class="img-fluid" />
+                </div>
             </figure>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-12 col-md-12 offset-md-1 col-lg-5">
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-5">
                     <div class="home-block-entry">
                         <h1>Direct <span></span>Experience <span></span>Matters</h1>
                         <p><?php echo the_field('home_entry_3');?></p>
@@ -71,3 +83,4 @@
         </div>
     </div>
 </section>
+</div>

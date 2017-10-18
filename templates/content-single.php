@@ -31,6 +31,11 @@ $people = get_field('author');
         <h1 class="entry-title"><?php the_title(); ?></h1>
     </header>
     <div class="entry-content">
+        <?php if(get_field('video_id')):?>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo the_field('video_id');?>" allowfullscreen></iframe>
+        </div>        
+        <?php endif;?>
         <?php the_content(); ?>
     </div>
     <footer>

@@ -11,6 +11,7 @@
         </div>
     </div>
 </div>
+<div class="page-wrapper">
 <div class="container">
     <div class="filter-header">
         <div class="row">
@@ -54,3 +55,4 @@
         <?php endwhile; ?>
     </div>
 </section>
+</div>

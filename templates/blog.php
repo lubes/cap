@@ -8,7 +8,7 @@
                     <input class="btn btn-none" type="submit" id="searchsubmit" value="<?php echo esc_attr_x( '', 'submit button' ); ?>" />
                 </form>                
             </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 offset-lg-2">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 offset-xl-2">
                 <div class="post-filters">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -32,7 +32,7 @@
     </div>
     <?php if(is_home('blog')):?>
     <ul class="post-blocks">
-        <?php $args = array( 'posts_per_page' => 4, 'post_type'=> 'post' );
+        <?php $args = array( 'posts_per_page' => 8, 'post_type'=> 'post', 'category' => 12 );
         $myposts = get_posts( $args );  $i = 0;
         foreach ( $myposts as $post ) : setup_postdata( $post );$i++; ?>
         <li <?php post_class('post-block category-all'); ?> style="background:url(<?php if(has_post_thumbnail) { echo the_post_thumbnail_url(); }?>) no-repeat center;background-size: cover;">
@@ -53,8 +53,9 @@
     <section class="all-posts">
         <div class="container">
             <div class="row">
-                <?php while (have_posts()) : the_post(); ?>
-                  <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
+                <?php $my_query = new WP_Query( 'cat=-12' ); ?>
+                <?php while ( $my_query->have_posts() ) : $my_query->the_post(); ?>
+                <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
                 <?php endwhile; ?>
             </div>
         </div>

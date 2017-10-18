@@ -6,6 +6,7 @@
             </div>
         </div>
     </div>
+    <div class="page-wrapper">
     <div class="filter-header">
         <div class="container">
             <div class="row">
@@ -41,8 +42,9 @@
             <article <?php post_class('col-6 col-sm-6 col-md-4 col-lg-3 team-member inview-item team_category-all'); ?>>
                 <a class="team-link" href="<?php the_permalink();?>">
                     <figure class="bio-image">
-                        <img src="<?php echo the_post_thumbnail_url();?>" class="img-fluid" />
-                        <img src="<?php echo the_field('hover_image');?>" class="img-fluid overlay-image" />
+                        <!--<img src="<?php echo the_post_thumbnail_url();?>" class="img-fluid" />-->
+                        <img src="<?php echo the_field('hover_image');?>" class="img-fluid hover-effect" />
+                        <!--<img src="<?php echo the_field('hover_image');?>" class="img-fluid overlay-image" />-->
                     </figure>
                 </a>
                 <header>
@@ -60,7 +62,10 @@
         <?php endwhile; ?>
         </div>
     </div>
+    </div>
 </section>
+<div class="page-wrapper">
 <a class="footer-cta blue-cta" href="<?php echo site_url();?>/solutions">
     <div class="footer-cta-text white"><span>See Our Solutions</span></div>
 </a>
+</div>
