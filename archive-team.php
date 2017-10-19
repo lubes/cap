@@ -20,7 +20,7 @@
                             <div class="col-12 col-sm-12 col-md-6">
                                 <ul class="filter-col list-unstyled">
                                     <li><a class="active filter-link" data-filter="all">EVERYONE</a></li>
-                                    <li><a class="filter-link" data-filter="client-advisors">CLIENT ADVISORS</a></li>
+                                    <li><a class="filter-link" data-filter="client-advisors">CLIENT ADVISOR</a></li>
                                     <li><a class="filter-link" data-filter="investments">INVESTMENTS</a></li>
                                 </ul>
                             </div>
@@ -38,7 +38,10 @@
     </div>
     <div class="container">
         <div class="row">
-        <?php while (have_posts()) : the_post(); ?>
+            
+        <?php $args = array( 'posts_per_page' => -1, 'post_type'=>'team' );
+        $myposts = get_posts( $args );  $i = 0;
+        foreach ( $myposts as $post ) : setup_postdata( $post );$i++; ?>
             <article <?php post_class('col-6 col-sm-6 col-md-4 col-lg-3 team-member inview-item team_category-all'); ?>>
                 <a class="team-link" href="<?php the_permalink();?>">
                     <figure class="bio-image">
@@ -59,7 +62,7 @@
                     <?php the_excerpt(); ?>
                 </div>
             </article>
-        <?php endwhile; ?>
+        <?php endforeach;  wp_reset_postdata();?>              
         </div>
     </div>
     </div>

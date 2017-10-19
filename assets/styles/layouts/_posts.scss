@@ -124,6 +124,30 @@
             line-height: 30px;
             margin: 0 auto 25px;
         }
+        a {
+            color: $charcoal;
+            display: inline-block;
+            @include bold();
+            position: relative;
+            &:before {
+                content:'';
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                left:0;
+                right: 0;
+                height: 2px;
+                background: $charcoal;
+                @include easing();
+            }
+            &:hover {
+                &:before {
+                    left: 50%;
+                    right: auto;
+                    width: 0%;
+                }
+            }
+        }
         img {
             padding: 50px 0;
             width: 100%;
@@ -172,9 +196,12 @@
         position: absolute;
         right: 0;
         height: 40px;
+        padding: 0 20px;
         background: none;
         color: transparent;
         z-index: 1;
+        outline: none !important;
+        box-shadow: none !important;
     }
 }
 

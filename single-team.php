@@ -67,6 +67,7 @@ $articles = get_field('related_articles');
                     <?php echo $responsibilities; ?>
                     </div>
                 </div>
+                <?php if($articles):?>
                 <div class="side-entry">
                     <div class="side-header">
                         <h5>RELATED ARTICLES</h5>
@@ -77,6 +78,7 @@ $articles = get_field('related_articles');
                     <?php } ?>
                     </div>
                 </div>
+                <?php endif;?>
             </div>
         </div>
     </div>

@@ -1,4 +1,10 @@
-<?php get_template_part('templates/page', 'header'); ?>
+<div class="page-header smallest article-header grey">
+    <div class="page-header-entry">
+        <div class="container">
+            <h1>Articles</h1>
+        </div>
+    </div>
+</div>
 <?php if (!have_posts()) { ?>
     <div class="no-results">
         <div class="container">

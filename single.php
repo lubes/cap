@@ -1,4 +1,4 @@
-<div class="page-header article-header smaller <?php echo the_field('color');?>"></div>
+<div class="page-header article-header small <?php echo the_field('color');?>"></div>
 <div class="page-wrapper">
     <div class="container">
         <div class="single-post-wrap">

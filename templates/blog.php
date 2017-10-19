@@ -53,10 +53,16 @@
     <section class="all-posts">
         <div class="container">
             <div class="row">
+                <?php if(is_home('blog')){?>
                 <?php $my_query = new WP_Query( 'cat=-12' ); ?>
                 <?php while ( $my_query->have_posts() ) : $my_query->the_post(); ?>
                 <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
                 <?php endwhile; ?>
+                <?php } else { ?>
+                <?php while (have_posts()) : the_post(); ?>
+                  <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
+                <?php endwhile; ?>                
+                <?php } ?>
             </div>
         </div>
     </section>

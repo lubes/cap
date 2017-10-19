@@ -88,14 +88,14 @@
         <div class="about-block">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-10">
-                    <div class="about-entry">
+                    <div class="about-entry smaller">
                         <h5>PORTFOLIOS MADE BY DESIGN</h5>
                         <span class="break red-break"></span>
                         <?php echo the_field('investing_entry_2');?>
                     </div>
                 </div>
             </div>
-            <div class="about-entry">
+            <div class="about-entry smaller">
                 <p class="italic">Our framework encompasses four distinct steps:</p>
             </div>
             <div class="row">
@@ -108,7 +108,7 @@
                 </div>
                 <?php endwhile;?>
             </div>
-            <div class="about-entry">
+            <div class="about-entry smaller">
                 <p class="italic">Our thought process is geared around four distinct concepts:</p>
             </div>
             <div class="row">
@@ -121,7 +121,7 @@
                 </div>
                 <?php endwhile;?>
             </div>
-            <div class="about-entry">
+            <div class="about-entry entry-header">
                 <h5>THE CAPROCK DIFFERENCE</h5>
                 <span class="break red-break"></span>
             </div>

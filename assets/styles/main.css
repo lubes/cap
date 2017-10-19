@@ -1,22 +1,22 @@
 /*
 Error: Invalid CSS after "...e slow_easing()": expected "}", was "&.arrow-1 {"
-        on line 632 of /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/common/_global.scss
+        on line 749 of /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/common/_global.scss
         from line 9 of /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/main.scss
 
-627:                 left: -80px;
-628:                 .anim-arrow  {
-629:                     position: absolute;
-630:                     opacity: 0;
-631:                     @include slow_easing()
-632:                     &.arrow-1 {
-633:                         transition-delay: 0.3s;
-634:                     }
-635:                     &.arrow-2 {
-636:                         transition-delay: 0.4s;
-637:                     }
+744:                 left: -150px;
+745:                 .anim-arrow  {
+746:                     position: absolute;
+747:                     opacity: 0;
+748:                     @include slow_easing()
+749:                     &.arrow-1 {
+750:                         transition-delay: 0.3s;
+751:                     }
+752:                     &.arrow-2 {
+753:                         transition-delay: 0.4s;
+754:                     }
 
 Backtrace:
-/Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/common/_global.scss:632
+/Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/common/_global.scss:749
 /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/main.scss:9
 /Applications/Adobe Dreamweaver CC 2017/Adobe Dreamweaver CC 2017.app/Contents/Resources/gems/rubygems/gems/sass-3.4.19/lib/sass/scss/parser.rb:1161:in `expected'
 /Applications/Adobe Dreamweaver CC 2017/Adobe Dreamweaver CC 2017.app/Contents/Resources/gems/rubygems/gems/sass-3.4.19/lib/sass/scss/parser.rb:1097:in `expected'
@@ -81,4 +81,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"...e slow_easing()\": expected \"}\", was \"&.arrow-1 {\"\A         on line 632 of /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/common/_global.scss\A         from line 9 of /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/main.scss\A \A 627:                 left: -80px;\A 628:                 .anim-arrow  {\A 629:                     position: absolute;\A 630:                     opacity: 0;\A 631:                     @include slow_easing()\A 632:                     &.arrow-1 {\A 633:                         transition-delay: 0.3s;\A 634:                     }\A 635:                     &.arrow-2 {\A 636:                         transition-delay: 0.4s;\A 637:                     }"; }
+  content: "Error: Invalid CSS after \"...e slow_easing()\": expected \"}\", was \"&.arrow-1 {\"\A         on line 749 of /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/common/_global.scss\A         from line 9 of /Applications/MAMP/htdocs/caprock/wp-content/themes/caprock/assets/styles/main.scss\A \A 744:                 left: -150px;\A 745:                 .anim-arrow  {\A 746:                     position: absolute;\A 747:                     opacity: 0;\A 748:                     @include slow_easing()\A 749:                     &.arrow-1 {\A 750:                         transition-delay: 0.3s;\A 751:                     }\A 752:                     &.arrow-2 {\A 753:                         transition-delay: 0.4s;\A 754:                     }"; }

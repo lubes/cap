@@ -42,7 +42,7 @@ function this_page() {
     } elseif (is_home('blog')) {
         echo 'blog';
     } elseif (is_search()) {
-        echo 'search_results';
+        echo 'blog';
     } else {
         echo 'basic';
     }

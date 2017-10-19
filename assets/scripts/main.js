@@ -117,7 +117,7 @@ var Homepage = Barba.BaseView.extend({
     namespace: 'home',
     onEnter: function() {
         setTimeout(function(){
-            $('.intro-entry').addClass('ready');
+            $('.intro').addClass('ready');
         }, 500);
         // Affix menu at different position on homepage
         $(document).on("scroll", function() {
@@ -161,7 +161,7 @@ var TeamPage = Barba.BaseView.extend({
             $(this).addClass('active');
             setTimeout(function(){
                 $('.'+filter_tag).fadeIn('fast');
-            }, 500);
+            }, 100);
         });
     }
 });
@@ -195,6 +195,7 @@ var SolutionsPage = Barba.BaseView.extend({
             autoplay: true,
             autoplaySpeed: 5000000,
             pauseOnHover: false,
+            fade: true,
             appendArrows: $('.navs-wrap'),
             prevArrow: "<div class='prev slider-arrow'><i class='ion-ios-arrow-left'></i></div>",
             nextArrow: "<div class='next slider-arrow'><i class='ion-ios-arrow-right'></i></div>"
@@ -215,7 +216,6 @@ var SolutionsPage = Barba.BaseView.extend({
 var BlogPage = Barba.BaseView.extend({
     namespace: 'blog',
     onEnter: function() {
- 
         var filter_link = $('.filter-link');
         filter_link.click(function() {
             var this_filter = $(this).data('filter');
@@ -226,7 +226,7 @@ var BlogPage = Barba.BaseView.extend({
             $(this).addClass('active');
             setTimeout(function(){
                 $('.'+filter_tag).fadeIn('fast');
-            }, 500);
+            }, 100);
         });  
     },
     onEnterCompleted: function() {
