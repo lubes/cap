@@ -50,7 +50,6 @@ $white:                     #fff;
 }
 
 // Easing
-
 @mixin easing() {
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
@@ -64,6 +63,13 @@ $white:                     #fff;
     -o-transition: all 0.8s ease-out;
     transition: all 0.8s ease-out;
 } 
+
+@mixin slowest_easing() {
+    -webkit-transition: all 1.6s ease-out;
+    -moz-transition: all 1.6s ease-out;
+    -o-transition: all 1.6s ease-out;
+    transition: all 1.6s ease-out;
+}
 
 @mixin easing_med() {
     -webkit-transition: all 0.4s ease-out;

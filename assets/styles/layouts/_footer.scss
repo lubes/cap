@@ -35,6 +35,9 @@
                 font-size: 14px;
                 line-height: 22px;
                 color: #000;
+                &:hover {
+                    color: $red;
+                }
             }
         }
     }

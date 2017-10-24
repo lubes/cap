@@ -1,30 +1,45 @@
 <?php while (have_posts()) : the_post();
 $color = get_field('color');
 $source_image = get_field('source_image');
+$logo_size = get_field('logo_size');
 $people = get_field('author');
+$read_more_url = get_field('read_more_url');
+$read_more_title = get_field('read_more_title');
 ?>
 <article <?php post_class(); ?>>
     <div class="post-meta">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-8 col-lg-9">
-                    <div class="post-content-meta blue">         
-                    <p><?php $term_list = wp_get_post_terms($post->ID, 'category'); if($term_list[0]->name == 'Featured') { echo $term_list[1]->name; } else { echo $term_list[0]->name; } ?> / <?php the_time('m.d.Y') ?>
-                        <span class="author">
-                        <?php if($people) { echo 'By ';
-                                           
-                            foreach( $people as $person ) { ?>
-                                <a href="<?php echo get_permalink( $person->ID );?>"><?php echo get_the_title( $person->ID );?></a>
-                            <?php }             
-                                          
-                        } ?></span>
-                        </p>                       
-                    </div>
+                <div class="post-content-meta blue">   
+                    
+                <p><?php $term_list = wp_get_post_terms($post->ID, 'category');
+                    if($term_list[0]->name == 'Featured'){
+                        echo $term_list[1]->name;
+                    } else {
+                        // echo $term_list[0]->name;
+                        the_terms( $post->name, 'category' );
+                    } ?>
+                    / <?php the_time('m.d.Y') ?>
+                    <span class="author">/ 
+                    <?php if($people) { echo 'By ';
+                        foreach( $people as $person ) { ?>
+                            <a href="<?php echo get_permalink( $person->ID );?>"><?php echo get_the_title( $person->ID );?></a>
+                        <?php }             
+                    } ?>
+                    <?php if(get_field('author_option')):?>
+                        <?php echo the_field('author_option');?>
+                    <?php endif; ?>    
+                    </span>
+                    </p>                       
+                </div>
             </div>
+            <?php if($source_image):?>
             <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                <figure class="source-img">
-                    <img src="<?php echo $source_image;?>" class="img-fluid" />
+                <figure class="source-img <?php echo $logo_size;?>">
+                    <img src="<?php echo $source_image;?>" class="" />
                 </figure>
             </div>
+            <?php endif;?>
         </div>
     </div>
     <header>
@@ -37,6 +52,9 @@ $people = get_field('author');
         </div>        
         <?php endif;?>
         <?php the_content(); ?>
+        <?php if($read_more_url):?>
+            <a class="read-more" href="<?php echo $read_more_url;?>" target="_blank"><?php echo $read_more_title;?></a>
+        <?php endif;?>
     </div>
     <footer>
         <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>

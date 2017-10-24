@@ -19,7 +19,7 @@
     </ul>
 ';?>  
 <?php $login = '
-    <a href="#" target="_blank" class="btn btn-blue btn-icon btn-lg">Client Login</a>
+    <a href="http://caprock.addepar.com" target="_blank" class="btn btn-blue btn-icon btn-lg">Client Login</a>
 ';?>
 <footer class="content-info">
     <div class="container">  

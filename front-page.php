@@ -29,7 +29,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-12 col-md-8 col-lg-5">
+                <div class="col col-12 col-sm-12 col-md-8 offset-md-1 col-lg-5 offset-lg-0">
                     <div class="home-block-entry">
                         <h1>Family Office <span></span> is the Right <span></span>Structure</h1>
                         <p><?php echo the_field('home_entry_1');?></p>
@@ -51,7 +51,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-12 col-lg-6 offset-lg-6">
+                <div class="col col-12 col-sm-10 offset-md-1 col-lg-6 offset-lg-6">
                     <div class="home-block-entry">
                         <h1>Generate <span></span>Wealth That <span></span>Lasts Generations</h1>
                         <p><?php echo the_field('home_entry_2');?></p>
@@ -72,7 +72,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col col-12 col-sm-12 col-md-12 col-lg-5">
+                <div class="col col-12 col-sm-12 col-md-7 offset-md-1 col-lg-5 offset-lg-0">
                     <div class="home-block-entry">
                         <h1>Direct <span></span>Experience <span></span>Matters</h1>
                         <p><?php echo the_field('home_entry_3');?></p>

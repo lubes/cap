@@ -12,9 +12,9 @@
     </div>
 </div>
 <div class="page-wrapper">
-<section class="about-wrap">
+<section class="entry-wrap">
     <div class="container">
-        <div class="about-block">
+        <div class="entry-block">
             <div class="el-animate el-1 p_el" data-scroll="8">
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/arrow.svg" class="img-fluid" /></figure>
             </div>
@@ -23,7 +23,7 @@
                     <div class="about-title"><h1>Our Vision</h1></div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-7">
-                    <div class="about-entry">
+                    <div class="about-entry first">
                         <h5>GUIDING PRINCIPLES</h5>
                         <span class="break red-break"></span>
                         <?php echo the_field('vision_entry_1');?>
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="about-block">
+        <div class="entry-block">
             <div class="el-animate el-2 p_el" data-scroll="8">
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/arrow-burst.svg" class="img-fluid" /></figure>
             </div>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="about-block">
+        <div class="entry-block">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8 offset-lg-4">
                     <div class="about-entry">
@@ -59,18 +59,18 @@
     </div>
 </section>
 
-<section class="about-wrap our-story">
+<section class="entry-wrap huge-padding our-story">
     <div class="container">
-        <div class="about-block">
+        <div class="entry-block">
             <div class="el-animate el-1 p_el" data-scroll="8">
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/c-mark.svg" class="img-fluid" /></figure>
             </div>
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-                    <div class="about-title"><h1>Our Story</h1></div>
+                    <div class="about-title double"><h1>Our Story</h1></div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8">
-                    <div class="about-entry">
+                    <div class="about-entry first">
                         <?php echo the_field('story_entry');?>
                     </div>
                 </div>

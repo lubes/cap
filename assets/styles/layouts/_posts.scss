@@ -11,7 +11,6 @@
 .post-blocks {
     padding: 0;
     margin: -10px;
-    
      .post-block {
         display: block;;
         width: 50%;
@@ -47,7 +46,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        padding: 30px;
+        padding: 24px;
         &.grey {
             background: $grey;
         }
@@ -62,7 +61,6 @@
         }
     }
 }
-
 
 // Post Meta
 .post-content-meta { 
@@ -80,6 +78,9 @@
         margin: 0 auto;
         text-transform: uppercase;
     }
+    a {
+        color: $dark_blue;
+    }
     h3 {
         margin: 0 auto;
         @include reg();
@@ -90,6 +91,25 @@
         text-transform: none;
         a {
             color: $dark_blue;
+            position: relative;
+            &:before {
+                content:'';
+                position: absolute;
+                bottom: -5px;
+                left: 50%;
+                right: auto;
+                width: 0%;
+                height: 2px;
+                background: $dark_blue;
+                @include easing();
+            }
+            &:hover {
+                &:before {
+                    width: 100%;
+                    left:0;
+                    right: 0;
+                }
+            }
         }
     }
 }
@@ -106,12 +126,28 @@
     background: $pale;
     padding: 80px 100px;
     .post-meta {
-        border-bottom: 3px solid $light_gray;
-        margin: 0 auto 40px;
-        padding-bottom: 40px;
+        border-bottom: 4px solid #b1b1b1;
+        margin: 0 auto 50px;
+        padding-bottom: 50px;
+        p {
+            font-size: 15px;
+            letter-spacing: 0.01em;
+        }
     }
     figure {
-        margin: -10px auto 0;
+        margin: -5px auto 0;
+        max-height: 30px;
+        height: 30px;
+        float: right;
+        &.square {
+            height: 60px;
+            max-height: 60px;
+            margin: -20px auto -15px;
+        }
+        img {
+            height: 100%;
+            width: auto;
+        }
     }
     h1 {
         font-size: 52px;
@@ -124,37 +160,41 @@
             line-height: 30px;
             margin: 0 auto 25px;
         }
-        a {
-            color: $charcoal;
-            display: inline-block;
-            @include bold();
-            position: relative;
-            &:before {
-                content:'';
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                left:0;
-                right: 0;
-                height: 2px;
-                background: $charcoal;
-                @include easing();
-            }
-            &:hover {
-                &:before {
-                    left: 50%;
-                    right: auto;
-                    width: 0%;
-                }
-            }
-        }
+
         img {
-            padding: 50px 0;
+            padding: 0 0 30px;
             width: 100%;
             height: auto;
         }
         .embed-responsive {
             margin: 0 auto 50px;
+        }
+    }
+}
+
+.read-more {
+    color: $charcoal;
+    display: inline-block;
+    @include bold();
+    font-size: 14px;
+    position: relative;
+    &:before {
+        content:'';
+        position: absolute;
+        bottom: -2px;
+        width: 100%;
+        left:0;
+        right: 0;
+        height: 2px;
+        background: $charcoal;
+        @include easing();
+    }
+    &:hover, &:focus {
+        color: $charcoal;
+        &:before {
+            left: 50%; 
+            right: auto;
+            width: 0%;
         }
     }
 }
@@ -244,6 +284,7 @@
             @include reg();
             a {
                 color: $red;
+                @include reg();
             }
         }
         &.in-view {
@@ -298,6 +339,80 @@
     }
 }
 
+// Tables
+
+.entry-content {
+    table {
+      border: 1px solid $grey;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      table-layout: fixed;
+      margin: 20px auto;
+    }
+    table caption {
+      font-size: 1.5em;
+      margin: .5em 0 .75em;
+    }
+    table tr {
+      border: 1px solid $grey;
+      padding: .35em;
+    }
+    table th,
+    table td {
+      padding: .625em;
+      text-align: left;
+    }
+    table th {
+      font-size: .85em;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    @media screen and (max-width: 600px) {
+      table {
+        border: 0;
+      }
+      table caption {
+        font-size: 1.3em;
+      }
+      table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+      table tr {
+        border-bottom: 3px solid $grey;
+        display: block;
+        margin-bottom: .625em;
+      }
+      table td {
+        border-bottom: 1px solid $grey;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+      }
+      table td:before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      table td:last-child {
+        border-bottom: 0;
+      }
+    }
+}
+
 @media (max-width: 1200px) {
     .post-content-meta {
         p {
@@ -328,5 +443,30 @@
             }
         }
     }
+    .single-post-wrap {
+        padding: 60px 80px;   
+    }
 }
+
+@media (max-width: 575px) {
+    .single-post-wrap {
+        padding: 40px;
+        .post-meta {
+            margin: 0 auto 20px;
+            padding-bottom: 20px;
+        }
+        h1 {
+            font-size: 32px;
+            line-height: 38px;
+        }
+        .entry-content {
+            p {
+                font-size: 16px;
+                line-height: 28px;
+                margin: 0 auto 20px;
+            }
+        }
+    }
+}
+
 

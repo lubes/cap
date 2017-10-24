@@ -156,7 +156,7 @@ var TeamPage = Barba.BaseView.extend({
             var this_filter = $(this).data('filter');
             var prefix = 'team_category-';
             var filter_tag = prefix + this_filter;
-            $('article').fadeOut('fast');
+            $('article').hide();
             filter_link.removeClass('active');
             $(this).addClass('active');
             setTimeout(function(){
@@ -221,12 +221,12 @@ var BlogPage = Barba.BaseView.extend({
             var this_filter = $(this).data('filter');
             var prefix = 'category-';
             var filter_tag = prefix + this_filter;
-            $('.post-block').fadeOut('fast');
+            $('.post-block').hide();
             filter_link.removeClass('active');
             $(this).addClass('active');
             setTimeout(function(){
                 $('.'+filter_tag).fadeIn('fast');
-            }, 100);
+            }, 200);
         });  
     },
     onEnterCompleted: function() {
@@ -305,5 +305,6 @@ Barba.Pjax.getTransition = function() {
 Barba.Pjax.init();
 Barba.Prefetch.init();
 
-
+ 
+    
 })(jQuery);

@@ -30,6 +30,9 @@
             </div>
         </div>
     </div>
+    
+    
+    
     <?php if(is_home('blog')):?>
     <ul class="post-blocks">
         <?php $args = array( 'posts_per_page' => 8, 'post_type'=> 'post', 'category' => 12 );
@@ -54,7 +57,7 @@
         <div class="container">
             <div class="row">
                 <?php if(is_home('blog')){?>
-                <?php $my_query = new WP_Query( 'cat=-12' ); ?>
+                <?php $my_query = new WP_Query( 'cat=-12&orderby=date&order=DESC' ); ?>
                 <?php while ( $my_query->have_posts() ) : $my_query->the_post(); ?>
                 <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
                 <?php endwhile; ?>
@@ -68,3 +71,4 @@
     </section>
 </div>
 </section>
+

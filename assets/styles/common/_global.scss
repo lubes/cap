@@ -8,6 +8,14 @@ body {
     color: $charcoal;
 }
 
+a {
+    color: $light_blue;
+    @include semi();
+    &:hover {
+        color: $dark_blue;
+    }
+}
+
 // Grid Overrides
 @media (min-width: 1200px) {
     .container {
@@ -163,7 +171,7 @@ main, .main {
 
 .break {
     width: 170px;
-    height: 3px; 
+    height: 4px; 
     display: inline-block;
     margin: 0 auto -5px 0;
     &.red-break {
@@ -205,7 +213,7 @@ main, .main {
         right: 0;
         .intro-logo {
             width: 275px;
-            margin: 0 auto 15vh 0;
+            margin: 0 auto 22vh 0;
         }
         h1 {
             color: $white;
@@ -219,13 +227,15 @@ main, .main {
         .animated-line {
             position: absolute;
             left: 50%;
-            bottom: -420px;
+            // bottom: -420px;
+            bottom: auto;
+            margin-top: 30px;
             height: 0;
-            width: 1px;
+            width: 2px;
             background: #fff;
-            left: 180px;
+            left: 165px;
             z-index: 1;
-            @include slow_easing();
+            @include slowest_easing();
         }
         .intro-logo {
             opacity: 0;
@@ -251,7 +261,7 @@ main, .main {
                 }
             }
             .animated-line {
-                height: 400px;
+                height: 380px;
                 transition-delay: 1.2s;
             }   
         }
@@ -264,10 +274,10 @@ main, .main {
     position: relative;
     @include easing();
     &.larger {
-        height: 600px;
+        height: 605px;
     }
     &.smaller {
-        height: 600px;
+        height: 605px;
     }
     &.small {
         height: 520px;
@@ -318,13 +328,14 @@ main, .main {
     }
     .page-header-entry {
         position: absolute;
-        bottom: 35px;
+        bottom: 55px;
         left: 0;
         right: 0;
         margin: 0 auto;
         h1 {
             font-size: 72px;
             line-height: 80px;
+            margin: 0 auto;
             color: $dark_blue;
         }   
     }
@@ -364,15 +375,17 @@ main, .main {
             background-size: cover;   
         }
     }
-     
 }
 
 // Post Format
 
 .entry-content {
-    padding: 50px 0 150px;
+    padding: 30px 0 150px;
     .entry {
-        margin: 0 auto 25px;
+        margin: 0 auto 70px;
+        h5 {
+            margin: 0 auto 20px;
+        }
     }
     p {
         font-size: 19px;
@@ -395,12 +408,29 @@ main, .main {
     }
 }
 
+.post-filter {
+    float: right;
+}
+
 .filter-col {
-    border-left: 3px solid $light_gray;
-    padding-top: 8px;
+    border-left: 4px solid $light;
+    padding-top: 7px !important;
+    padding-left: 0 !important;
     height: 105px;
+    &.contact-list {
+        li {
+            font-size: 16px; 
+            white-space: nowrap;
+        }
+        .list-title {
+            @include bold();
+            &:hover {
+                color: $light;
+            }
+        }
+    }
     li {
-        padding-left: 20px;
+        padding-left: 25px;
         color: $light;
         @include semi();
         font-size: 14px;
@@ -415,9 +445,15 @@ main, .main {
             &:hover, &.active {
                 color: $charcoal;
             }
+            &.active {
+                @include bold();
+            }
         }
         &:hover, &.active {
             color: $charcoal;
+        }
+        &.active {
+            @include bold();
         }
     }
 }
@@ -443,7 +479,7 @@ main, .main {
         margin: 5px auto;
         a {
             color: $red;
-            @include semi();
+            @include bold();
             font-size: 19px;
             line-height: 20px;
         }
@@ -486,18 +522,33 @@ main, .main {
             }
         }
     }
+    &:hover {
+        .entry-title {
+            a {
+                color: $charcoal;
+            }
+        }
+    }
 }
 // Team Bio
 
 .team-bio {
     background: $pale;
-}
+    .entry-content {
+        margin: 50px 0 150px;
+        .entry {
+            p {
+                margin: 0 auto 30px;
+            }
+        }
+    }
+} 
 
 .bio-header { 
-    margin-top: -200px;
+    margin-top: -240px;
     color: $white;
     .entry-title {
-        margin: 60px auto 0;
+        margin: 90px auto 0;
         font-size: 65px;
         line-height: 80px;
         white-space: nowrap;
@@ -527,7 +578,7 @@ main, .main {
         @include semi();
     }
     .employee-socials {
-        margin: 90px auto 0;
+        margin: 105px auto 0;
         li {
             display: inline-block;
             margin: 0 10px 0 0;
@@ -548,19 +599,26 @@ main, .main {
     }
 }
 
+.dark {
+    .bio-header .entry-title, .bio-header p {
+        color: $dark_blue;
+    }
+}
+
 // Side bar
 
 .side-bar {
     margin: 60px auto;
     .side-entry {
-        margin: 0 auto 60px;
+        margin: 0 auto 70px;
         color: $charcoal;
         .side-header {
             color: $light;
-            border-bottom: 3px solid $light;
+            border-bottom: 4px solid $light;
             margin: 0 auto 30px;
             h5 {
                 font-size: 16px;
+                margin: 0 auto 20px;
             }
         }
         .related-articles {
@@ -624,6 +682,7 @@ main, .main {
         text-align: center;
         left: 0;
         right: 0;
+        font-weight: 400;
         @include heading();
         span {
             position: relative;
@@ -696,7 +755,7 @@ main, .main {
 // Homepage
  
 .home-body {
-    padding: 150px 0 210px; 
+    padding: 200px 0 210px; 
     background: $pale;
     position: relative;
     width: 100% !important;
@@ -782,12 +841,10 @@ main, .main {
     }
 }
  
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .home-body {
         .animate-el {
-            .static-img {
-                max-width: 680px;
-            }
+            max-width: 680px;
             &.el-2 {
                 .animated-arrows {
                     width: 820px;
@@ -797,17 +854,60 @@ main, .main {
     }
 }
 
-// About Page
+@media (max-width: 1280px) {
+    .home-body {
+        .animate-el {
+            max-width: 680px;
+            &.el-2 {
+                .animated-arrows {
+                    width: 720px;
+                }
+            }
+        }
+    }
+} 
 
-.about-wrap {
+@media (max-width: 1140px) {
+    .home-body {
+        .animate-el {
+            max-width: 580px;
+            &.el-2 {
+                .animated-arrows {
+                    width: 620px;
+                }
+            }
+        }
+    }
+} 
+
+.entry-wrap {
     background: $pale; 
     padding-top: 220px;
-    padding-bottom: 110px;
-    .about-block {
-        padding: 0;
+    &.no-padding {
+        padding-top: 0;
+    }
+    &.huge-padding {
+        padding-bottom: 185px;
+    }
+    .entry-block {
         position: relative;
         .about-entry {
-            margin: 100px auto 90px;
+            margin: 0 auto 190px;
+            &.no-bottom {
+                margin-bottom: 0;
+            }
+            &.first {
+                padding-top: 100px;
+            }
+            &.smaller {
+                margin: 0 auto 35px;
+            }
+            &.col-entry {
+                padding-right: 20px;  
+            }
+            .entry-header {
+                margin: 100px auto 0;
+            }
             .break {
                 margin: 30px auto 25px 0;
                 display: block;
@@ -820,11 +920,13 @@ main, .main {
             h6 {
                 color: $dark_blue;
                 font-size: 19px;
+                line-height: 30px;
                 @include bold();
             }
             p {
                 font-size: 19px;
                 line-height: 30px;
+                margin-bottom: 30px;
             }
             ul {
                 font-size: 19px;
@@ -834,12 +936,9 @@ main, .main {
             }
             .icon {
                 margin: 0 auto;
-            }
-            &.smaller {
-                margin: 30px auto 0;
-            }
-            &.entry-header {
-                margin: 100px auto 0; 
+                img {
+                    margin-left: -50px;
+                }
             }
             &.inview-item {
                 figure {
@@ -866,19 +965,19 @@ main, .main {
                         opacity: 1;
                     }
                 }
-            }
+            }            
+            
         }
     }
     .about-title {
+        &.double {
+            margin-top: -50px;
+        }
         h1 {
             font-size: 65px;
             line-height: 70px;
             color: $light_blue;
         }
-    }
-    &.our-story {
-        background: $white;
-        padding-bottom: 200px;
     }
     .el-animate {
         position: absolute;
@@ -887,21 +986,31 @@ main, .main {
         top: 0;
         &.el-1 {
             left: 70px;
-            top: -100px; 
+            top: -150px; 
             width: 420px;
         }
         &.el-2 {
             right: 10%;
-            top: 100px; 
+            top: 0; 
+        }
+        &.el-3 {
+            left: -20px;
+            top: -200px; 
+            width: 520px;
         }
     }
-}
+    // Our Story
+    &.our-story {
+        background: $white;
+    }
+} 
+
 
 // Timeline Slider
 
 .slider-wrap {
     position: relative; 
-    margin: 0 auto 90px;
+    margin: -90px auto 190px;
     .timeline-slider {
         background: $red;
         color: $white;
@@ -1005,7 +1114,7 @@ main, .main {
             @include easing_med();
         }
         .location-title {
-            @include semi();
+            @include bold();
             color: $red;
             text-transform: uppercase;
             font-size: 20px;
@@ -1013,12 +1122,13 @@ main, .main {
             position: relative;
             margin: 0 auto 17px;
             padding-bottom: 17px;
+            display: inline-block;
             &:before {
                 content:'';
                 position: absolute;
                 bottom: 0;
-                width: 90px;
-                height: 2px;
+                width: 100%;
+                height: 4px;
                 background: $red;
             }
         }
@@ -1074,8 +1184,11 @@ main, .main {
 
 // Tablet Portrat 
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     
+    .page-nav {
+        top: -75px;
+    }
     .intro {
         // @include med_container();
         .intro-entry {
@@ -1095,19 +1208,18 @@ main, .main {
         overflow-x: hidden;
         .animate-el {
             position: relative;
-            width: 600px;
+            max-width: 645px;
             right: auto;
             margin: 0 0 0 auto;
-            .static-img {
-                max-width: 600px;
-            }
+            top: auto;
+            height: 400px;
             &.el-2 {
-                height: 300px;
                 .animated-arrows {
-                    left: -300px;
-                    width: 700px; 
+                    width: 760px;
+                    left: -250px;
                 }
             }
+
         }
         .home-block {
             margin: 75px auto 150px;
@@ -1134,7 +1246,7 @@ main, .main {
             line-height: 28px;
         }
     }
-    .about-wrap {
+    .entry-wrap {
         padding-top: 160px;
         padding-bottom: 100px;
         .el-animate {
@@ -1149,7 +1261,7 @@ main, .main {
                 line-height: 70px;
             }
         }
-        .about-block {
+        .entry-block {
             padding: 0 0 75px;
             .about-entry {
                 margin: 70px auto 0;
@@ -1168,6 +1280,41 @@ main, .main {
             }
         }
     }
+    .location {
+        height: 400px;
+        margin: 0 -40px 180px;
+        .location-entry {
+            top: auto;
+            left: 30px;
+            right: 30px;
+            bottom: -150px;
+            width: auto;
+            .location-title {
+                // font-size: 18px;
+                // line-height: 24px;
+            }
+            p {
+                // line-height: 22px;
+                // font-size: 16px;
+
+            }
+        }
+    }
+    .slider-wrap {
+        margin: 0 auto 190px;
+        .timeline-slider {
+            .slide {
+                height: 100%;
+                .date {
+                    margin: 80px auto 40px;
+                }
+                .timeline-entry {
+                    margin: 0 auto;
+                    padding: 0 60px;
+                }
+            }
+        }
+    }
 }
 
 // Phone Portait
@@ -1178,7 +1325,9 @@ main, .main {
         padding-right: 30px;
         padding-left: 30px;
     }    
-
+    .entry-content {
+        padding: 20px 0 75px;
+    }
     .intro {
         .intro-entry {
             h1 {
@@ -1235,6 +1384,9 @@ main, .main {
         }
     }
     .page-header {
+        &.smaller {
+            height: 485px;
+        }
         .page-header-entry {
             h1 {
                 font-size: 50px;
@@ -1245,12 +1397,12 @@ main, .main {
                 */ 
             }
         }
-        &.smaller {
-            height: 485px;
-        }
     }
     .footer-cta {
         height: 280px;
+        &.smaller {
+            height: 280px;
+        }
         .footer-cta-text {
             font-size: 40px;
             line-height: 1;
@@ -1265,7 +1417,7 @@ main, .main {
             }
         }
     }
-    .about-wrap {
+    .entry-wrap {
         width: 100% !important;
         overflow-x: hidden !important;
         padding-top: 100px;
@@ -1283,7 +1435,7 @@ main, .main {
                 font-size: 50px;
             }
         }
-        .about-block {
+        .entry-block {
             .about-entry {
                 margin: 25px auto 0;
                 .break {
@@ -1307,27 +1459,6 @@ main, .main {
             a {
                 font-size: 13px;
                 line-height: 15px;
-            }
-        }
-    }
-    .location {
-        height: 400px;
-        margin: 0 auto 130px;
-        .location-entry {
-            top: auto;
-            left: 20px;
-            right: 20px;
-            bottom: -100px;
-            width: auto;
-            padding: 30px;
-            .location-title {
-                font-size: 18px;
-                line-height: 24px;
-            }
-            p {
-                line-height: 22px;
-                font-size: 16px;
-
             }
         }
     }
