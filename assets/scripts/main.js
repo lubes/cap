@@ -1,5 +1,12 @@
 (function($) {
 
+// DISABLE BARBA IF USER IS LOGGED IN
+if ($('body').hasClass('logged-in')) {
+  Barba.Pjax.preventCheck = function() {
+    return false; 
+  };
+}
+    
 function global_functions() {
     
     // Remove Dark from body class, appeneded at the Basic module
