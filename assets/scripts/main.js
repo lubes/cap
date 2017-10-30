@@ -195,7 +195,7 @@ var SolutionsPage = Barba.BaseView.extend({
         $('.timeline-slider').slick({
             dots: false,
             arrows: true,
-            infinite: false,
+            infinite: true,
             slidesToShow: 1, 
             slidesToScroll: 1,
             speed: 600,
@@ -205,7 +205,16 @@ var SolutionsPage = Barba.BaseView.extend({
             fade: true,
             appendArrows: $('.navs-wrap'),
             prevArrow: "<div class='prev slider-arrow'><i class='ion-ios-arrow-left'></i></div>",
-            nextArrow: "<div class='next slider-arrow'><i class='ion-ios-arrow-right'></i></div>"
+            nextArrow: "<div class='next slider-arrow'><i class='ion-ios-arrow-right'></i></div>",
+          responsive: [
+            {
+              breakpoint: 575,
+              settings: {
+                adaptiveHeight: true
+              }
+            }
+
+          ]
         });    
         var slides = $('.timeline-slider .slide').length;
         $('#total').html(slides); 

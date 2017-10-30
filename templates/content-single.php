@@ -38,7 +38,7 @@ $read_more_title = get_field('read_more_title');
                 </div>
             </div>
             <?php if($source_image):?>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+            <div class="hidden-sm-down col-12 col-sm-12 col-md-4 col-lg-3">
                 <figure class="source-img <?php echo $logo_size;?>">
                     <img src="<?php echo $source_image;?>" class="" />
                 </figure>

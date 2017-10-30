@@ -166,14 +166,18 @@
             <div class="timeline-slider">
                 <?php $i=0; while ( have_rows('timeline') ) : the_row(); $i++; ?>
                 <div class="slide" data-slide="<?php echo $i;?>">
+                    <div class="timeline-entry hidden-sm-up">
+                        <h5>CAPROCK IMPACT INVESTING TIMELINE</h5>
+                        <span class="break white-break"></span> 
+                    </div>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                             <span class="date"><?php echo the_sub_field('year');?></span>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-7">
                             <div class="timeline-entry">
-                                <h5>CAPROCK IMPACT INVESTING TIMELINE</h5>
-                                <span class="break white-break"></span> 
+                                <h5 class="hidden-sm-down">CAPROCK IMPACT INVESTING TIMELINE</h5>
+                                <span class="break white-break hidden-sm-down"></span> 
                                 <p><?php echo the_sub_field('timeline_description');?></p>
                             </div>
                         </div>

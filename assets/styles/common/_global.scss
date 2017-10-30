@@ -1290,12 +1290,14 @@ main, .main {
         }
     }
     .location {
-        height: 400px;
+        height: 350px;
         margin: 0 -40px 180px;
+        background-size: 125% !important;
+        background-position: 50% 0% !important;
         .location-entry {
             top: auto;
-            left: 30px;
-            right: 30px;
+            left: 0;
+            right: 0;
             bottom: -150px;
             width: auto;
             .location-title {
@@ -1459,6 +1461,7 @@ main, .main {
         .about-title {
             h1 {
                 font-size: 50px;
+                line-height: 60px;
             }
         }
         .entry-block {
@@ -1513,6 +1516,9 @@ main, .main {
         margin: 0 auto;
         li {
             padding: 0;
+        }
+        &.contact-list {
+            margin: 20px auto;
         }
     }
     .team-member {
@@ -1574,6 +1580,41 @@ main, .main {
     .entry-wrap .entry-block .about-entry .icon {
         margin: -30px auto 0;
     }
+    
+    .page-header.article-header {
+        height: 350px;
+    }
+    
+    .location .location-entry:before {
+        width: 100%;
+    }
+    
+    // Mobile Slider
+    .slider-wrap {
+        margin: 0 -20px 50px;
+        .timeline-slider {
+            padding: 0 20px 120px;
+            .slide {
+                .date {
+                    font-size: 72px;
+                    margin: 0 auto;
+                    text-align: left;
+                    padding: 0 20px
+                }
+            }
+            .slide {
+                .timeline-entry {
+                    margin: 50px auto 0;
+                    padding: 0 20px;
+                    p {
+                        font-size: 20px;
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 

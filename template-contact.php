@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-6">
                 <p>We are ready to serve your family.<br>Let’s connect.</p>
-                <span class="break red-break"></span>
+                <span class="break red-break hidden-sm-down"></span>
             </div>
             <div class="col-12 col-sm-12 col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-xl-4 offset-xl-1">
                 <div class="post-filters">

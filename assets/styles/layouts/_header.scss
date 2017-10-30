@@ -159,33 +159,37 @@
 
 // Home
 
-.home {
-    .banner {
-        top: -160px;
-        &.smaller {
-            position: fixed;
-            top: 0;
-        }
-    }    
+.barba-container {
+    &.home {
+         .banner {
+            top: -160px;
+            &.smaller {
+                position: fixed;
+                top: 0;
+            }
+        }        
+    }
 }
 
 @media (max-width: 768px) {
 
-    .home {
-        .banner {
-            top: 0;
-            padding: 0;
-            &.smaller {
-                position: absolute;
+    .barba-container {
+        &.home {
+            .banner {
+                top: 0;
+                padding: 0;
+                &.smaller {
+                    position: absolute;
+                }
+                .brand {
+                    display: none;
+                }
             }
-            .brand {
-                display: none;
+            .hamburger-menu {
+                top: 50px;
             }
-        }
-        .hamburger-menu {
-            top: 50px;
-        }
-    }    
+        }   
+    }
     
     .banner {
         position: absolute;

@@ -9,7 +9,6 @@
                 </form>                
             </div>
             <div class="col-12 col-sm-12 col-md-6 pull-md-6 col-lg-6 pull-lg-0 col-xl-4 offset-xl-2">
-                
                     <?php
                     $filters_1 = '
                     <li><a class="active filter-link" data-filter="all">EVERYTHING</a></li>
