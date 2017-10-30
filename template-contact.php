@@ -15,14 +15,14 @@
 <div class="container">
     <div class="filter-header">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-6">
-                <p>We are ready to serve your family. Let’s connect.</p>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-6">
+                <p>We are ready to serve your family.<br>Let’s connect.</p>
                 <span class="break red-break"></span>
             </div>
-            <div class="col-12 col-sm-12 col-md-7 col-lg-5 offset-lg-1 col-xl-4 offset-xl-1">
+            <div class="col-12 col-sm-12 col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-xl-4 offset-xl-1">
                 <div class="post-filters">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6 offset-md-6">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 offset-lg-6">
                             <ul class="filter-col list-unstyled contact-list">
                                 <li class="list-title">GENERAL INQUIRIES</li>
                                 <li><a class="contact-link">800-344-6458</a></li>
@@ -45,10 +45,11 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-5 col-lg-12">
                             <h3 class="location-title"><?php the_sub_field('title');?></h3>
-                            <a href="https://www.google.com/maps?saddr=My+Location&daddr=<?php $location = get_sub_field('address'); echo $location['lat'] . ',' . $location['lng']; ?>" target="_blank" class="btn btn-red btn-link btn-icon hidden-md-up">VIEW MAP</a>
+                            <div class="clearfix"></div>
+                            <a href="https://www.google.com/maps?saddr=My+Location&daddr=<?php $location = get_sub_field('address'); echo $location['lat'] . ',' . $location['lng']; ?>" target="_blank" class="btn btn-red btn-link btn-icon hidden-lg-up">VIEW MAP</a>
                         </div>
                         <div class="col-12 col-sm-12 col-md-7 col-lg-12">
-                            <p><?php echo $location['address']; ?></p>
+                            <p><?php the_sub_field('custom_address_title');?></p>
                             <ul class="list-unstyled">
                                 <li><span>T:</span> <?php the_sub_field('phone');?></li>
                                 <li><span>F:</span> <?php the_sub_field('fax');?></li>

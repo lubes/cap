@@ -213,7 +213,10 @@ main, .main {
         right: 0;
         .intro-logo {
             width: 275px;
-            margin: 0 auto 22vh 0;
+            margin: 0 auto 20vh 0;
+            transform: translateY(50px);
+            opacity: 0;
+            @include easing_med();
         }
         h1 {
             color: $white;
@@ -237,10 +240,6 @@ main, .main {
             z-index: 1;
             @include slowest_easing();
         }
-        .intro-logo {
-            opacity: 0;
-            @include slow_easing();
-        }
     }
     &.ready {
         &:before {
@@ -251,6 +250,7 @@ main, .main {
             .intro-logo {
                 opacity: 1;
                 transition-delay: 0.8s;
+                transform: translateY(0);
             }
             h1 {
                 transform: translateY(0);
@@ -535,7 +535,7 @@ main, .main {
 .team-bio {
     background: $pale;
     .entry-content {
-        margin: 50px 0 150px;
+        margin: 25px 0 150px;
         .entry {
             p {
                 margin: 0 auto 30px;
@@ -628,6 +628,9 @@ main, .main {
                 padding: 10px 0;
                 font-size: 17px;
                 display: block;
+                &:hover {
+                    color: $light;
+                }
             }
         }
     }
@@ -1247,7 +1250,7 @@ main, .main {
         }
     }
     .entry-wrap {
-        padding-top: 160px;
+        padding-top: 130px;
         padding-bottom: 100px;
         .el-animate {
             &.el-2 {
@@ -1260,11 +1263,17 @@ main, .main {
                 font-size: 60px;
                 line-height: 70px;
             }
+            &.double {
+                margin: 0 auto;
+            }
         }
         .entry-block {
             padding: 0 0 75px;
             .about-entry {
-                margin: 70px auto 0;
+                margin: 50px auto 0;
+                &.first {
+                    padding-top: 0;
+                }
             }
         }
     }
@@ -1322,14 +1331,15 @@ main, .main {
 @media (max-width: 575px) {
     
     .container {
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 20px;
+        padding-left: 20px;
     }    
     .entry-content {
         padding: 20px 0 75px;
     }
     .intro {
         .intro-entry {
+            bottom: 25vh;
             h1 {
                 font-size: 58px;
                 line-height: 64px;
@@ -1337,27 +1347,33 @@ main, .main {
             }
             .intro-logo {
                 width: 200px;
+                margin: 0 auto 15vh 0;
             }
             .animated-line {
                 left:100px;
-                bottom: -270px;
+                // bottom: -270px;
             }
-            &.ready {
+        }
+        &.ready {
+            .intro-entry {
                 .animated-line {
-                    height: 250px;
+                    height: 230px;
                 }
             }
         }
     }
+    
     .home-body {
-        padding: 50px 0;
+        padding: 50px 0 0;
         .animate-el {
-            width: 90%;
+            width: 100%;
+            height: 200px;
             .static-img {
                 margin: 0 0 0 auto;
             }
             &.el-2 {
                 height: 200px;
+                left: 40px;
                 .animated-arrows {
                     left: -120px;
                     width: 450px;
@@ -1379,6 +1395,9 @@ main, .main {
                 p {
                     font-size: 16px;
                     line-height: 24px;
+                    br {
+                        display: none;
+                    }
                 }
             }
         }
@@ -1413,6 +1432,13 @@ main, .main {
                     top: 50px;
                     left: 50%;
                     margin-left: -20px;
+                }
+            }
+            &.go-back {
+                span {
+                    &:before {
+                        left: 50%;
+                    }
                 }
             }
         }
@@ -1454,12 +1480,100 @@ main, .main {
             }
         }
     }
+    .filter-header {
+        margin: 55px auto 20px;
+    }
+    .mobile-filters {
+        .filter-btn {
+            color: $charcoal;
+            font-size: 14px;
+            @include bold();
+            display: inline-block;
+            padding: 30px 0 15px;
+        }    
+        .mobile-filter-wrap {
+            margin: 0 -20px;
+            padding: 15px 20px;
+            background: $white;
+            opacity: 0;
+            @include easing();
+        }
+        .collapse {
+            &.show {
+                .mobile-filter-wrap {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .filter-col {
+        height: 100%;
+        padding: 0 !important;
+        border: none;
+        margin: 0 auto;
+        li {
+            padding: 0;
+        }
+    }
     .team-member {
-        .entry-title  {
+        .entry-title {
+            font-size: 13px;
+            line-height: 15px;
+            margin: 10px auto 5px;
             a {
                 font-size: 13px;
                 line-height: 15px;
             }
         }
+        ul {
+            li {
+                font-size: 11px;
+                line-height: 15px;
+            }
+        }
+    }
+    
+    .bio-header {
+        margin-top: -340px;
+        color: $dark_blue;
+        .entry-title {
+            font-size: 44px;
+            white-space: inherit;
+            line-height: 48px;
+            margin: 20px auto 0;
+        }
+        p {
+            font-size:  18px;
+        }
+        .employee-socials {
+            margin: 40px auto 0;
+        }
+    }    
+    
+    // Over ride BS columns
+    .team-wrap {
+        .team-members {
+            margin-left: -6px;
+            margin-right: -6px;
+        }
+    }
+    .col-6 {
+        &.team-member {
+            padding-left: 6px !important;
+            padding-right:6px !important;
+        }
+    }
+    .team-bio {
+        .entry-content {
+            margin: 25px 0 0px;
+        }
+    }
+    .side-bar {
+        margin: 0 auto;
+    }
+    .entry-wrap .entry-block .about-entry .icon {
+        margin: -30px auto 0;
     }
 }
+
+

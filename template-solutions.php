@@ -15,14 +15,13 @@
 <section class="entry-wrap" id="capabilities">
     <div class="container">
         <!-- Page Navs -->
-        <div class="page-nav">
+        <div class="page-nav hidden-sm-down">
             <ul class="filter-col list-unstyled">
                 <li><a class="active anchor-link" href="#capabilities">CAPABILITIES</a></li>
                 <li><a class="anchor-link" href="#investing">INVESTING</a></li>
                 <li><a class="anchor-link" href="#impact">IMPACT INVESTING</a></li>
             </ul>   
         </div>
-        
         <div class="entry-block">
             <div class="el-animate el-1 p_el" data-scroll="8">
                 <figure><img src="<?php echo get_template_directory_uri();?>/dist/images/arrow.svg" class="img-fluid" /></figure>
@@ -156,7 +155,7 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                     <div class="about-entry first">
-                        <h5>RETURN THE FOOD FOR A GOOD RETURN</h5>
+                        <h5>RETURN THE GOOD FOR A GOOD RETURN</h5>
                         <span class="break red-break"></span>
                         <?php echo the_field('impact_entry_1');?>
                     </div>

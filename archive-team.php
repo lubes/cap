@@ -14,20 +14,35 @@
                     <p>Before we get to know your family, come get to know ours. You’ll find our expertise is as diverse as our portfolios.</p>
                     <span class="break red-break"></span>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 offset-lg-2">
-                    <div class="post-filters">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 offset-lg-2">                    
+                    <?php
+                    $filters_1 = '
+                    <li><a class="active filter-link" data-filter="all">EVERYONE</a></li>
+                    <li><a class="filter-link" data-filter="client-advisors">CLIENT ADVISOR</a></li>
+                    <li><a class="filter-link" data-filter="investments">INVESTMENTS</a></li>';  
+                    $filters_2 = '
+                    <li><a class="filter-link" data-filter="operations">OPERATIONS</a></li>
+                    <li><a class="filter-link" data-filter="client-experience">CLIENT EXPERIENCE</a></li>'; ?>
+                    <div class="mobile-filters hidden-md-up">
+                        <a class="filter-btn" data-toggle="collapse" href="#sort_by" aria-expanded="false" aria-controls="collapseExample">SORT BY +</a>
+                        <div class="collapse" id="sort_by">
+                            <div class="mobile-filter-wrap">
+                                <ul class="filter-col list-unstyled">
+                                <?php echo $filters_2; echo $filters_1; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-filters hidden-sm-down">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-6">
                                 <ul class="filter-col list-unstyled">
-                                    <li><a class="active filter-link" data-filter="all">EVERYONE</a></li>
-                                    <li><a class="filter-link" data-filter="client-advisors">CLIENT ADVISOR</a></li>
-                                    <li><a class="filter-link" data-filter="investments">INVESTMENTS</a></li>
+                                    <?php echo $filters_1; ?>
                                 </ul>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <ul class="filter-col list-unstyled">
-                                    <li><a class="filter-link" data-filter="operations">OPERATIONS</a></li>
-                                    <li><a class="filter-link" data-filter="client-experience">CLIENT EXPERIENCE</a></li>
+                                    <?php echo $filters_2; ?>
                                 </ul>
                             </div>
                         </div>
@@ -37,7 +52,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row team-members">
         <?php $args = array( 'posts_per_page' => -1, 'post_type'=>'team' );
         $myposts = get_posts( $args );  $i = 0;
         foreach ( $myposts as $post ) : setup_postdata( $post );$i++; ?>
