@@ -8,11 +8,12 @@
     min-height: 1000px;
 }
 
+/*
 .post-blocks {
     padding: 0;
     margin: -10px;
      .post-block {
-        display: block;;
+        display: block;
         width: 50%;
         width: calc(50% - 20px);
         overflow: hidden;
@@ -61,6 +62,63 @@
         }
     }
 }
+*/
+
+.post-blocks {
+    padding: 0;
+    margin: -10px;
+     .post-block {
+        display: block;
+        width: 50%;
+        width: calc(50% - 20px);
+        margin: 10px;
+        overflow: hidden;
+        float: left;
+        position: relative;
+        &:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+        &:nth-child(2), &:nth-child(5) {
+            width: 50%;
+            width: calc(50% - 20px);
+            &:after {
+                padding-bottom: calc(50% - 9px);
+            }
+        }
+        &:nth-child(3), &:nth-child(4), &:nth-child(7), &:nth-child(8) {
+            width: 25%;
+            width: calc(25% - 20px);
+        } 
+        &:nth-child(6) {
+            float: right;
+        }
+    } 
+    .post-content {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 24px;
+        &.grey {
+            background: $grey;
+        }
+        &.red {
+            background: $red;
+        }
+        &.dark_blue {
+            background: $dark_blue;
+        }
+        &.light_blue {
+            background: $light_blue;
+        }
+    }
+}
+
+
 
 blockquote {
     padding: 0 0 0 40px;
@@ -74,6 +132,9 @@ blockquote {
     }
     &.blue {
         color: $dark_blue;
+        a  {
+            color: $dark_blue;
+        }
     }
     p {
         font-size: 12px;
@@ -81,6 +142,9 @@ blockquote {
         letter-spacing: 0.05em;
         margin: 0 auto;
         text-transform: uppercase;
+        a {
+            color: $light;
+        }
     }
     a {
         color: $dark_blue;
@@ -324,7 +388,7 @@ blockquote {
         font-size: 16px;
         padding: 0 10px;
         &.current {
-            color: $grey;
+            color: $charcoal;
         }
         &.prev {
             position: absolute;
@@ -348,6 +412,9 @@ blockquote {
                 right: 0;
                 top: 4px;
             }
+        }
+        &:hover {
+            color: $charcoal; 
         }
     }
     .nav-links {
@@ -436,11 +503,47 @@ blockquote {
 @media (max-width: 1200px) {
     .post-content-meta {
         p {
-            font-size: 10px;
+            // font-size: 10px;
         }
         h3 {
+            
+            //font-size: 22px;
+            // line-height: 32px;
+        }
+    }
+}
+
+@media (max-width: 1024px) and (min-width:992px) {
+    .all-posts {
+        .post-block {
+            .entry-title {
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+    
+    .post-blocks {
+        float: left;
+        width: 100%;
+    }
+    
+    .post-content-meta {
+        p {
+            font-size: 11px;
+            line-height: 16px;
+        }
+        h3 { 
             font-size: 22px;
-            line-height: 32px;
+            line-height: 26px; 
+        }
+    }
+    .single-post-wrap {
+        margin: -140px auto 0;
+        padding: 60px;
+        h1 {
+            font-size: 48px;
+            line-height: 58px;
         }
     }
 }
@@ -464,7 +567,16 @@ blockquote {
         }
     }
     .single-post-wrap {
-        padding: 60px 80px;   
+        padding: 50px 60px;   
+    }
+    .post-content-meta {
+        p {
+            font-size: 12px;
+        }
+        h3 {
+            font-size: 28px;
+            line-height: 38px;
+        }   
     }
 }
 
@@ -492,6 +604,7 @@ blockquote {
         .post-block {
             width: 100%;
             width: calc(100% - 20px);
+            
             &:nth-child(2), &:nth-child(5) {
                 width: 100%;
                 width: calc(100% - 20px);
@@ -502,14 +615,33 @@ blockquote {
             }
         }
     }
+    .all-posts {
+        .post-block {
+            padding: 0 25px;
+        }
+    }
     .all-posts .post-block .entry-title {
         font-size: 24px;
         line-height: 32px;
     }
     .all-posts .post-content-meta p {
         color: $charcoal;
+        font-size: 11px;
     }
     
+    .articles-header {
+        margin: 20px auto 25px;
+    }
+    .entry-content {
+        table {
+            td {
+                text-align: left;
+            }
+        }
+    }
+    blockquote {
+        padding: 0 0 0 20px;
+    }
 }
 
 

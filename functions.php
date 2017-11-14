@@ -31,6 +31,8 @@ unset($file, $filepath);
 function this_page() {
     if (is_page('home')) { 
         echo 'home';
+    } elseif (is_category()) {
+        echo 'blog';
     } elseif (is_page('about')) {
         echo 'about';
     } elseif (is_single()) {
@@ -47,3 +49,14 @@ function this_page() {
         echo 'basic';
     }
 }
+
+// Order All Posts Date / DESC
+add_action( 'pre_get_posts', 'my_change_sort_order'); 
+function my_change_sort_order($query){
+if(is_paged()):
+    $query->set( 'order', 'DESC' );
+    $query->set( 'orderby', 'date' );
+endif;    
+};
+
+

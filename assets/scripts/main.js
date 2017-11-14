@@ -1,7 +1,7 @@
 (function($) {
 
 // DISABLE BARBA IF USER IS LOGGED IN
-if ($('body').hasClass('logged-in')) {
+if ($('#mainContainer').hasClass('logged-in')) {
   Barba.Pjax.preventCheck = function() {
     return false; 
   };
@@ -156,7 +156,7 @@ var Homepage = Barba.BaseView.extend({
 var TeamPage = Barba.BaseView.extend({
     namespace: 'team',
     onEnter: function() {
-
+    
         $('.menu-item-27').addClass('current_page_item');
         var filter_link = $('.filter-link');
         filter_link.click(function() {
@@ -210,7 +210,7 @@ var SolutionsPage = Barba.BaseView.extend({
             {
               breakpoint: 575,
               settings: {
-                adaptiveHeight: true
+                // adaptiveHeight: true
               }
             }
 
@@ -228,10 +228,38 @@ var SolutionsPage = Barba.BaseView.extend({
         parallax();
     },
 });
+    
+    
 
 var BlogPage = Barba.BaseView.extend({
     namespace: 'blog',
-    onEnter: function() {
+    onEnter: function() {     
+     
+        
+        function reset_filter() {
+            $('.filter-link.link-everything').removeClass('active');
+        }
+        if(window.location.href.indexOf("video") > -1) {
+            $('.filter-link.link-video').addClass('active');
+            reset_filter();
+        }
+        if(window.location.href.indexOf("press") > -1) {
+            $('.filter-link.link-press').addClass('active');
+            reset_filter(); 
+        }  
+        if(window.location.href.indexOf("insights") > -1) {
+            $('.filter-link.link-insights').addClass('active');
+            reset_filter();
+        }  
+        if(window.location.href.indexOf("company-news") > -1) {
+            $('.filter-link.link-company-news').addClass('active');
+            reset_filter();
+        } 
+        if(window.location.href.indexOf("impact-investing") > -1) {
+            $('.filter-link.link-impact-investing').addClass('active');
+            reset_filter();
+        } 
+        /*
         var filter_link = $('.filter-link');
         filter_link.click(function() {
             var this_filter = $(this).data('filter');
@@ -244,6 +272,19 @@ var BlogPage = Barba.BaseView.extend({
                 $('.'+filter_tag).fadeIn('fast');
             }, 200);
         });  
+        */
+        // Packery for Posts
+        $('.grid').packery({
+            itemSelector: '.grid-item'
+        });
+      
+        // ReInit Packery on Window Resize for iPad Portrait/Landscape behavior
+        window.onresize = function(event) {
+            $('.grid').packery({
+                itemSelector: '.grid-item'
+            });
+        };        
+        
     },
     onEnterCompleted: function() {
         
@@ -253,6 +294,26 @@ var BlogPage = Barba.BaseView.extend({
     },
     onLeaveCompleted: function() {
     
+    },
+    startOverlay: function () {
+
+        $('body').addClass('leave');
+
+        return $(this.oldContainer).animate({
+            opacity: 1
+        }).delay(100).promise();
+        
+    },
+    finish: function () {
+
+        global_functions();
+
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+        this.done();
+
+        $('body').removeClass('leave');
+
     }
 }); 
     
@@ -323,4 +384,10 @@ Barba.Prefetch.init();
 
  
     
+    
+    
 })(jQuery);
+
+
+
+

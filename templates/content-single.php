@@ -14,24 +14,20 @@ $read_more_title = get_field('read_more_title');
                 <p><?php $term_list = wp_get_post_terms($post->ID, 'category');
                     if($term_list[0]->name == 'Featured'){
                         echo $term_list[1]->name;
-                        
                         if($term_list[2]) { echo ', '; echo $term_list[2]->name; }
                         if($term_list[3]) { echo ', '; echo $term_list[3]->name; }
-                        
                     } else {
-                        // echo $term_list[0]->name;
                         the_terms( $post->name, 'category' );
                     } ?>
                     <span class="sep"> / </span><?php the_time('m.d.Y') ?>
                     <span class="author">
-                    <?php if($people) { echo 'By ';
+                    <?php if($people) { echo '<span class="sep"> / </span>'; echo 'By ';
                         foreach( $people as $person ) { ?>
-                        <span class="sep"> / </span>
                             <a href="<?php echo get_permalink( $person->ID );?>"><?php echo get_the_title( $person->ID );?></a>
                         <?php }             
                     } ?>
                     <?php if(get_field('author_option')):?>
-                        <?php echo the_field('author_option');?>
+                        <?php echo '/ '; echo the_field('author_option');?>
                     <?php endif; ?>    
                     </span>
                     </p>                       

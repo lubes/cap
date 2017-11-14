@@ -4,10 +4,10 @@
     <div class="container">
         <div class="pagers">
             <?php the_posts_pagination( array(
-                'mid_size' => 2,
-                'prev_text' => __( 'PREVIOUS <span class="arrow arrow-left"></span>', 'textdomain' ),
-                'next_text' => __( 'NEXT  <span class="arrow arrow-right">', 'textdomain' ),
-            ) ); ?>
+            'mid_size' => 2,
+            'prev_text' => __( 'PREVIOUS <span class="arrow arrow-left"></span>', 'textdomain'),
+            'next_text' => __( 'NEXT  <span class="arrow arrow-right">', 'textdomain'),
+            ));?>
         </div>
     </div>
 </div>

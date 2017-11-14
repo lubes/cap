@@ -5,7 +5,8 @@ use Roots\Sage\Wrapper;
 <!doctype html>
 <html <?php language_attributes(); ?>>
     <?php get_template_part('templates/head'); ?>
-    <body <?php body_class(); ?>>
+    <body>
+    <div id="mainContainer" <?php body_class(); ?>
     <div class="loader"></div>
     <!--[if IE]>
       <div class="alert alert-warning">
@@ -23,7 +24,8 @@ use Roots\Sage\Wrapper;
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <?php do_action('get_footer');get_template_part('templates/footer');wp_footer();?>  
+    </div>
     </body>
 </html>

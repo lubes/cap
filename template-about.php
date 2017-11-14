@@ -7,7 +7,7 @@
 <div class="page-header smaller dark_blue about-pattern">
     <div class="page-header-entry">
         <div class="container">
-            <h1>Families need<br>an Advocate</h1>
+            <h1>Families Need<br>an Advocate</h1>
         </div>
     </div>
 </div>

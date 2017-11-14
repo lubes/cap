@@ -3,6 +3,7 @@
     "main.js": {
       "files": [
         "scripts/custom/barba.min.js",
+        "scripts/custom/packery.pkgd.js",
         "scripts/main.js"
       ],
       "main": true
