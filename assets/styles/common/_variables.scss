@@ -31,6 +31,11 @@ $white:                     #fff;
     font-family: 'Open Sans', sans-serif;
     font-weight:  400;
 }
+@mixin italic() {
+    font-family: 'Open Sans', sans-serif;
+    font-weight:  400;
+    font-style: italic;
+}
 @mixin semi() {
     font-family: 'Open Sans', sans-serif;
     font-weight:  600;
@@ -45,7 +50,6 @@ $white:                     #fff;
 }
 
 // Easing
-
 @mixin easing() {
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
@@ -59,6 +63,13 @@ $white:                     #fff;
     -o-transition: all 0.8s ease-out;
     transition: all 0.8s ease-out;
 } 
+
+@mixin slowest_easing() {
+    -webkit-transition: all 1.6s ease-out;
+    -moz-transition: all 1.6s ease-out;
+    -o-transition: all 1.6s ease-out;
+    transition: all 1.6s ease-out;
+}
 
 @mixin easing_med() {
     -webkit-transition: all 0.4s ease-out;
@@ -109,5 +120,14 @@ $white:                     #fff;
     background-size: contain;
     width: 50px;
     height: 50px;
+}
+// Container Widths
+
+@mixin med_container() {
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 30px;
+    }
 }
 

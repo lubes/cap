@@ -3,7 +3,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 99;
+    z-index: 999;
     padding: 50px 0 0;
     @include easing();
     .brand {
@@ -21,6 +21,7 @@
         ul {
             li {
                 margin-left: 30px;
+                @include easing();
                 a {
                     color: $white;
                     display: block;
@@ -67,19 +68,332 @@
         background: $dark_blue;
         .brand {
             width: 175px;
-            height: 45px;
+            height: 50px;
         }
     }
-} 
+}
+.search, .blog, .dark, .category {
+    .banner {
+        .brand {
+            background: url(../images/caprock_logo_dark.svg) no-repeat center;
+            background-size: contain;
+        }
+        .nav-primary {
+            ul {
+                li {
+                    a {
+                        color: $dark_blue;
+                        &:before {
+                            background: $dark_blue;
+                        }
+                    }
+                }
+            }
+        }
+        &.smaller {
+            height: 80px;
+            padding: 15px 0;
+            background: $dark_blue;
+            .brand {
+                background: url(../images/caprock_logo.svg) no-repeat center;
+                background-size: contain;
+            }
+            .nav-primary {
+                ul {
+                    li {
+                        a {
+                            color: $white;
+                            &:before {
+                                background: $white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Animate Links on Page Transition
+
+.leave {
+    .banner {
+        top: -120px;
+    }
+}
+
+/*
+.enter {
+    .banner {
+        .nav-primary {
+            ul {
+                li {
+                    @include easing();
+                    opacity: 1;
+                    position: relative;
+                    transform: translateY(0); 
+                    &:nth-child(1) {
+                        transition-delay: 0.15s; 
+                    }
+                    &:nth-child(2) {
+                        transition-delay: 0.2s;
+                    }
+                    &:nth-child(3) {
+                        transition-delay: 0.25s;
+                    }
+                    &:nth-child(4) {
+                        transition-delay: 0.3s;
+                    }
+                    &:nth-child(5) {
+                        transition-delay: 0.35s;
+                    }
+                    &:nth-child(6) {
+                        transition-delay: 0.4s;
+                    }
+                }
+            }
+        }   
+    }
+}
+*/
 
 // Home
 
-.home {
+.barba-container {
+    &.home {
+         .banner {
+            top: -160px;
+            &.smaller {
+                position: fixed;
+                top: 0;
+            }
+        }        
+    }
+}
+
+@media (max-width: 768px) {
+
+    .barba-container {
+        &.home {
+            .banner {
+                top: 0;
+                padding: 0;
+                &.smaller {
+                    position: absolute;
+                }
+                .brand {
+                    display: none;
+                }
+            }
+            .hamburger-menu {
+                top: 50px;
+            }
+        }   
+    }
+    
     .banner {
-        top: -160px;
+        position: absolute;
+        padding: 40px 0 0;
         &.smaller {
-            position: fixed;
-            top: 0;
+            position: absolute;
+        }
+    }
+    
+    .search, .blog, .dark, .category {
+        .bar {
+            background: rgba(3, 37, 80, 1);
+            &:before {
+                background: rgba(3, 37, 80, 1);
+            }
+            &:after {
+                background: rgba(3, 37, 80, 1);
+            }
+            &.animate {
+                background: rgba(3, 37, 80, 0); 
+                &:before, &:after {
+                    background: rgba(255, 255, 255, 1);
+                }
+            }
+        }
+        .banner {
+            .nav-primary {
+                ul {
+                    li {
+                        a {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    $bar-width: 25px;
+    $bar-height: 3px;
+    $bar-spacing: 8px;
+
+    .hamburger-menu {
+        position: absolute;
+        top: 20px;
+        left: auto;
+        right: 30px;
+        bottom: auto;
+        margin: auto;
+        width: $bar-width;
+        height: $bar-height + $bar-spacing*2;
+        cursor: pointer;
+        z-index: 999;
+    }
+    .bar,
+    .bar:after,
+    .bar:before {
+        width: $bar-width;
+        height: $bar-height;
+    }
+    .bar {
+        position: relative;
+        transform: translateY($bar-spacing);
+        background: rgba(255, 255, 255, 1);
+        transition: all 0ms 300ms;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: $bar-spacing;
+            background: rgba(255, 255, 255, 1);
+            transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: $bar-spacing;
+            background: rgba(255, 255, 255, 1);
+            transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &.animate {
+            background: rgba(255, 255, 255, 0); 
+            &:after {
+                top: 0;
+                transform: rotate(45deg);
+                transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);     
+            }
+            &:before {
+                bottom: 0;
+                transform: rotate(-45deg);
+                transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+        }
+    }
+    .menu-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: $dark_blue;
+        @include cubic();
+        transform: translateX(100%);
+        .nav-primary {
+            float: none;
+            padding: 160px 0 0;
+            width: 240px;
+            margin: 0 auto;
+            .nav {
+                display: block;
+                li {
+                    display: block;
+                    margin: 0 auto;
+                    @include easing_med();
+                    opacity: 0;
+                    position: relative;
+                    transform: translateX(50px);
+                    a {
+                        font-size: 55px;
+                        line-height: 68px;
+                        @include heading();
+                        text-transform: none;
+                        font-weight: lighter;
+                        letter-spacing: 0;
+                        &:hover, &:focus {
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                    &.current_page_item {
+                        a {
+                            color: $red;
+                            letter-spacing: 0;
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                    &:nth-child(1) {
+                        transition-delay: 0.15s;
+                    }
+                    &:nth-child(2) {
+                        transition-delay: 0.2s;
+                    }
+                    &:nth-child(3) {
+                        transition-delay: 0.25s;
+                    }
+                    &:nth-child(4) {
+                        transition-delay: 0.3s;
+                    }
+                    &:nth-child(5) {
+                        transition-delay: 0.35s;
+                    }
+                    &:nth-child(6) {
+                        transition-delay: 0.4s;
+                    }
+                }
+            }
+        }
+        &.open {
+            transform: translateX(0%);
+            .nav {
+                li {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+    }
+}
+
+// Phone Portait
+@media (max-width: 575px) {
+    
+    .home {
+        .hamburger-menu {
+            top: 40px;
         }
     }    
+    .banner {
+        padding: 30px 0 0;
+        .brand {
+            width: 150px;
+            height: 40px;
+        }
+    }
+    .hamburger-menu {
+        top: 9px;
+    }
+    .menu-wrapper {
+        .nav-primary {
+            width: 210px;
+            padding: 120px 0 0;
+            .nav {
+                li {
+                    a {
+                        font-size: 50px;
+                        line-height: 64px;
+                    }
+                }
+            }
+        }
+    }
+
 }

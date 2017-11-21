@@ -1,199 +1,221 @@
-/* ========================================================================
- * DOM-based Routing
- * Based on http://goo.gl/EUTi53 by Paul Irish
- *
- * Only fires on body classes that match. If a body class contains a dash,
- * replace the dash with an underscore when adding it to the object below.
- *
- * .noConflict()
- * The routing is enclosed within an anonymous function so that you can
- * always reference jQuery with $, even when in .noConflict() mode.
- * ======================================================================== */
-
 (function($) {
 
-function parallax() {
-    (function() {
-
-      var start = null;
-      var scrollPosition = window.scrollY;
-      var halfWindowHeight = window.innerHeight / 2;
-      var rAFstarted = false;
-
-      var scrollnimates = [].slice.call(document.getElementsByClassName('p_el'));
-      // get their offset from top of screen and their scroll speed
-      scrollnimates.forEach( function ( sn ) {
-          var clientOffsets = sn.getBoundingClientRect();
-          sn.animationOffset = clientOffsets.top + scrollPosition;
-          sn.magicNumber = sn.dataset.magicNumber || sn.getAttribute("data-scroll") || "-14";
-      });
-        function step(timestamp) {
-          if (!start) start = timestamp;
-          // full progress indicator
-          var progress = timestamp - start;
-          var scrollPoint = window.scrollY;
-          scrollnimates.forEach( function ( sn ) {
-            //sn.animationOffsets == main.he
-            if ( scrollPoint > ( sn.animationOffset - halfWindowHeight * 2 ) && scrollPoint < ( sn.animationOffset + halfWindowHeight ) ) {
-              var magicPoint = ( scrollPoint - ( sn.animationOffset - halfWindowHeight ) ) / sn.magicNumber;
-              var up = magicPoint  + 'px';
-              sn.style.webkitTransform = 'translateY('+up+')';
-              sn.style.MozTransform = 'translateY('+up+')';
-              sn.style.msTransform = 'translateY('+up+')';
-              sn.style.OTransform = 'translateY('+up+')';
-              sn.style.transform = 'translateY('+up+')';
-            }
-          });
-          window.requestAnimationFrame(step);
-        }
-        window.requestAnimationFrame(step);
-    })();
+// DISABLE BARBA IF USER IS LOGGED IN
+if ($('#mainContainer').hasClass('logged-in')) {
+  Barba.Pjax.preventCheck = function() {
+    return false; 
+  };
 }
+    
+function global_functions() {
+    
+    // Remove Dark from body class, appeneded at the Basic module
+    $('body').removeClass('dark');
+    
+    // JavaScript to be fired on all pages
+    $(document).on("scroll", function() {
+        if($(document).scrollTop()>100) {
+            $(".banner").addClass("smaller");
+        } else {
+            $(".banner").removeClass("smaller");
+        }
+    });  
 
-  // Use this variable to set up the common and page specific functions. If you
-  // rename this variable, you will also need to rename the namespace below.
-  var Sage = {
-    // All pages
-    'common': {
-      init: function() {
-        // JavaScript to be fired on all pages
-
+    // Hamburger
+    (function () {
+        $('.hamburger-menu').on('click', function() {
+            $('.bar').toggleClass('animate');
+            $('.menu-wrapper').toggleClass('open');
+        });
+    })();
+    
+    // INVIEW Functions
+    function inView( opt ) {
+        if( opt.selector === undefined ) {
+            console.log( 'Valid selector required for inView' );
+            return false;
+        }
+        var elems = [].slice.call( document.querySelectorAll( opt.selector ) ),
+            once = opt.once === undefined ? true : opt.once,
+            offsetTop = opt.offsetTop === undefined ? 0 : opt.offsetTop,
+            offsetBot = opt.offsetBot === undefined ? 0 : opt.offsetBot,
+            count = elems.length,
+            winHeight = 0,
+            ticking = false;
+        function update() {
+            var i = count;
+            while( i-- ) {
+                var elem = elems[ i ],
+                    rect = elem.getBoundingClientRect();
+                if( rect.bottom >= offsetTop && rect.top <= winHeight - offsetBot ) {
+                    elem.classList.add( 'in-view' );
+                    if( once ) {
+                        count--;
+                        elems.splice( i, 1 );
+                    }
+                } else {
+                    elem.classList.remove( 'in-view' );
+                }
+            }
+            ticking = false;
+        }
+        function onResize() {
+            winHeight = window.innerHeight;
+            requestTick();
+        }
+        function onScroll() {
+            requestTick();
+        }
+        function requestTick() {
+            if( !ticking ) {
+                requestAnimationFrame( update );
+                ticking = true;
+            }
+        }
+        window.addEventListener( 'resize', onResize, false );
+        document.addEventListener( 'scroll', onScroll, false );
+        document.addEventListener( 'touchmove', onScroll, false );
+        onResize();
+    }
+    // InView
+    inView({
+        selector: '.inview-item', // an .in-view class will get toggled on these elements
+        once: true, // set this to false to have the .in-view class be toggled on AND off
+        offsetTop: 0, // top threshold to be considered "in view"
+        offsetBot: 200 // bottom threshold to be considered "in view"
+    }); 
+}    
+global_functions();
+// End Global Functions
+    
+// Parallax Functino
+function parallax() {
+    var start = null;
+    var scrollPosition = window.scrollY;
+    var halfWindowHeight = window.innerHeight / 2;
+    var rAFstarted = false;
+    var scrollnimates = [].slice.call(document.getElementsByClassName('p_el'));
+    scrollnimates.forEach(function (sn) {
+        var clientOffsets = sn.getBoundingClientRect();
+        sn.animationOffset = clientOffsets.top + scrollPosition;
+        sn.magicNumber = sn.dataset.magicNumber || sn.getAttribute("data-scroll") || "-14";
+    });
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+        var scrollPoint = window.scrollY;
+        scrollnimates.forEach(function (sn) {
+            if (scrollPoint > (sn.animationOffset - halfWindowHeight * 2) && scrollPoint < (sn.animationOffset + halfWindowHeight)) {
+                var magicPoint = (scrollPoint - (sn.animationOffset - halfWindowHeight)) / sn.magicNumber;
+                var up = magicPoint + 'px';
+                sn.style.webkitTransform = 'translateY(' + up + ')';
+                sn.style.MozTransform = 'translateY(' + up + ')';
+                sn.style.msTransform = 'translateY(' + up + ')';
+                sn.style.OTransform = 'translateY(' + up + ')';
+                sn.style.transform = 'translateY(' + up + ')';
+            }
+        });
+        window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+}
+          
+var Homepage = Barba.BaseView.extend({
+    namespace: 'home',
+    onEnter: function() {
+        setTimeout(function(){
+            $('.intro').addClass('ready');
+        }, 500);
+        // Affix menu at different position on homepage
         $(document).on("scroll", function() {
-            if($(document).scrollTop()>100) {
+            if($(document).scrollTop()>900) {
                 $(".banner").addClass("smaller");
             } else {
                 $(".banner").removeClass("smaller");
             }
         });  
-          
-        // INVIEW Functions
-        function inView( opt ) {
-            if( opt.selector === undefined ) {
-                console.log( 'Valid selector required for inView' );
-                return false;
-            }
-            var elems = [].slice.call( document.querySelectorAll( opt.selector ) ),
-                once = opt.once === undefined ? true : opt.once,
-                offsetTop = opt.offsetTop === undefined ? 0 : opt.offsetTop,
-                offsetBot = opt.offsetBot === undefined ? 0 : opt.offsetBot,
-                count = elems.length,
-                winHeight = 0,
-                ticking = false;
-            function update() {
-                var i = count;
-                while( i-- ) {
-                    var elem = elems[ i ],
-                        rect = elem.getBoundingClientRect();
-                    if( rect.bottom >= offsetTop && rect.top <= winHeight - offsetBot ) {
-                        elem.classList.add( 'in-view' );
-
-
-                        if( once ) {
-                            count--;
-                            elems.splice( i, 1 );
-                        }
-                    } else {
-                        elem.classList.remove( 'in-view' );
-                    }
-                }
-                ticking = false;
-            }
-            function onResize() {
-                winHeight = window.innerHeight;
-                requestTick();
-            }
-            function onScroll() {
-                requestTick();
-            }
-            function requestTick() {
-                if( !ticking ) {
-                    requestAnimationFrame( update );
-                    ticking = true;
-                }
-            }
-            window.addEventListener( 'resize', onResize, false );
-            document.addEventListener( 'scroll', onScroll, false );
-            document.addEventListener( 'touchmove', onScroll, false );
-            onResize();
-        }
-        // InView
-        inView({
-            selector: '.inview-item', // an .in-view class will get toggled on these elements
-            once: true, // set this to false to have the .in-view class be toggled on AND off
-            offsetTop: 0, // top threshold to be considered "in view"
-            offsetBot: 200 // bottom threshold to be considered "in view"
-        }); 
-
-
-      },
-      finalize: function() {
-        // JavaScript to be fired on all pages, after page specific JS is fired
-      }
-    },
-    // Home page
-    'home': {
-      init: function() {
-        // JavaScript to be fired on the home page
-          
-            setTimeout(function(){
-                $('.intro-entry').addClass('ready');
-            }, 500);
-            
-            // Affix menu at different position on homepage
-            $(document).on("scroll", function() {
-                if($(document).scrollTop()>900) {
-                    $(".banner").addClass("smaller");
-                } else {
-                    $(".banner").removeClass("smaller");
-                }
-            });  
-          
-            parallax();
-          
-      },
-      finalize: function() {
-        // JavaScript to be fired on the home page, after the init JS
         
-      }
+        // Display Different Images on Page Load
+        var description = [
+          "./wp-content/themes/caprock/dist/images/Home_Navy_OceanWave.jpg",
+          "./wp-content/themes/caprock/dist/images/Home_Navy_MountainFog.jpg"
+        ];
+        var size = description.length
+        var x = Math.floor(size*Math.random())
+        var randomImg = description[x];
+        $('.intro').css("background-image", "url("+ randomImg +")");
+        
     },
-    // About us page, note the change from about-us to about_us.
-    'about': {
-      init: function() {
-        // JavaScript to be fired on the about us page
-          
-        parallax();  
-          
-      }
+    onEnterCompleted: function() {
+        parallax();
     },
-    // Solutions
-    'solutions': {
-      init: function() {
-        // JavaScript to be fired on the solutions page
-          
-        parallax();  
-          
+    onLeave: function() {
+        $('.intro-entry').removeClass('ready');
+    }
+});
+var TeamPage = Barba.BaseView.extend({
+    namespace: 'team',
+    onEnter: function() {
+    
+        $('.menu-item-27').addClass('current_page_item');
+        var filter_link = $('.filter-link');
+        filter_link.click(function() {
+            var this_filter = $(this).data('filter');
+            var prefix = 'team_category-';
+            var filter_tag = prefix + this_filter;
+            $('article').hide();
+            filter_link.removeClass('active');
+            $(this).addClass('active');
+            setTimeout(function(){
+                $('.'+filter_tag).fadeIn('fast');
+            }, 100);
+        });
+    }
+});
+    
+var AboutPage = Barba.BaseView.extend({
+    namespace: 'about',
+    onEnter: function() {
+
+    },
+    onEnterCompleted: function() {
+        parallax();
+    }
+});     
+    
+var SolutionsPage = Barba.BaseView.extend({
+    namespace: 'solutions',
+    onEnter: function() {
         $('.anchor-link').click(function(){
             $('html, body').animate({
                 scrollTop: $( $.attr(this, 'href') ).offset().top
             }, 1200);
             return false;
         });           
-          
         $('.timeline-slider').slick({
             dots: false,
             arrows: true,
-            infinite: false,
+            infinite: true,
             slidesToShow: 1, 
             slidesToScroll: 1,
             speed: 600,
             autoplay: true,
             autoplaySpeed: 5000000,
             pauseOnHover: false,
+            fade: true,
             appendArrows: $('.navs-wrap'),
             prevArrow: "<div class='prev slider-arrow'><i class='ion-ios-arrow-left'></i></div>",
-            nextArrow: "<div class='next slider-arrow'><i class='ion-ios-arrow-right'></i></div>"
-        });   
-          
+            nextArrow: "<div class='next slider-arrow'><i class='ion-ios-arrow-right'></i></div>",
+          responsive: [
+            {
+              breakpoint: 575,
+              settings: {
+                // adaptiveHeight: true
+              }
+            }
+
+          ]
+        });    
         var slides = $('.timeline-slider .slide').length;
         $('#total').html(slides); 
 
@@ -201,82 +223,177 @@ function parallax() {
             var current_slide = $('.slick-current').find('.slide').data('slide');
             $('#current').html(current_slide); 
         });
-          
-      }
     },
-    // Blog
-    'blog': {
-      init: function() {
-          
+    onEnterCompleted: function() {
+        parallax();
+    },
+});
+    
+    
+
+var BlogPage = Barba.BaseView.extend({
+    namespace: 'blog',
+    onEnter: function() {     
+     
+        
+        function reset_filter() {
+            $('.filter-link.link-everything').removeClass('active');
+            $('.featured-block').hide();
+        }
+        if(window.location.href.indexOf("video") > -1) {
+            $('.filter-link.link-video').addClass('active');
+            reset_filter(); 
+            $('.featured-block.category-video').show();
+        }
+        if(window.location.href.indexOf("press") > -1) {
+            $('.filter-link.link-press').addClass('active');
+            reset_filter(); 
+            $('.featured-block.category-press').show();
+        }  
+        if(window.location.href.indexOf("insights") > -1) {
+            $('.filter-link.link-insights').addClass('active');
+            reset_filter();
+            $('.featured-block.category-insights').show();
+        }  
+        if(window.location.href.indexOf("company-news") > -1) { 
+            $('.filter-link.link-company-news').addClass('active');
+            reset_filter();
+            $('.featured-block.category-company-news').show(); 
+        } 
+        if(window.location.href.indexOf("impact-investing") > -1) {
+            $('.filter-link.link-impact-investing').addClass('active');
+            reset_filter();
+            $('.featured-block.category-impact-investing').show();
+        } 
+        /*
         var filter_link = $('.filter-link');
         filter_link.click(function() {
             var this_filter = $(this).data('filter');
             var prefix = 'category-';
             var filter_tag = prefix + this_filter;
-            $('.post-block').fadeOut('fast');
+            $('.post-block').hide();
             filter_link.removeClass('active');
             $(this).addClass('active');
             setTimeout(function(){
                 $('.'+filter_tag).fadeIn('fast');
-            }, 500);
+            }, 200);
+        });  
+        */
+        // Packery for Posts
+        $('.grid').packery({
+            itemSelector: '.grid-item'
         });
-  
-      }
+      
+        // ReInit Packery on Window Resize for iPad Portrait/Landscape behavior
+        window.onresize = function(event) {
+            $('.grid').packery({
+                itemSelector: '.grid-item'
+            });
+        };        
+        
     },
-    // Team Page
-    'post_type_archive_team': {
-      init: function() {
-          
-        $('.menu-item-27').addClass('current_page_item');
-          
-        var filter_link = $('.filter-link');
-        filter_link.click(function() {
-            var this_filter = $(this).data('filter');
-            var prefix = 'team_category-';
-            var filter_tag = prefix + this_filter;
-            $('article').fadeOut('fast');
-            filter_link.removeClass('active');
-            $(this).addClass('active');
-            setTimeout(function(){
-                $('.'+filter_tag).fadeIn('fast');
-            }, 500);
-        });
-  
-      }
-    }
-  };
-
-  // The routing fires all common scripts, followed by the page specific scripts.
-  // Add additional events for more control over timing e.g. a finalize event
-  var UTIL = {
-    fire: function(func, funcname, args) {
-      var fire;
-      var namespace = Sage;
-      funcname = (funcname === undefined) ? 'init' : funcname;
-      fire = func !== '';
-      fire = fire && namespace[func];
-      fire = fire && typeof namespace[func][funcname] === 'function';
-
-      if (fire) {
-        namespace[func][funcname](args);
-      }
+    onEnterCompleted: function() {
+        
     },
-    loadEvents: function() {
-      // Fire common init JS
-      UTIL.fire('common');
+    onLeave: function() {
+    
+    },
+    onLeaveCompleted: function() {
+    
+    },
+    startOverlay: function () {
 
-      // Fire page-specific init JS, and then finalize JS
-      $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function(i, classnm) {
-        UTIL.fire(classnm);
-        UTIL.fire(classnm, 'finalize');
-      });
+        $('body').addClass('leave');
 
-      // Fire common finalize JS
-      UTIL.fire('common', 'finalize');
+        return $(this.oldContainer).animate({
+            opacity: 1
+        }).delay(100).promise();
+        
+    },
+    finish: function () {
+
+        global_functions();
+
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+        this.done();
+
+        $('body').removeClass('leave');
+
     }
-  };
+}); 
+    
+var BasicPage = Barba.BaseView.extend({
+    namespace: 'basic',
+    onEnterCompleted: function() {
+        
+        if($('.page-header').hasClass('grey')) {
+            $('body').addClass('dark');
+        } else {
+            $('body').removeClass('dark');
+        }
+        
+    }
+}); 
+    
+var SearchResults = Barba.BaseView.extend({
+    namespace: 'search_results',
+    onEnterCompleted: function() {
+        $('.menu-item-20').addClass('current_page_item');
+    }
+}); 
+    
+Homepage.init();  
+TeamPage.init();
+SolutionsPage.init();
+BlogPage.init();
+AboutPage.init();
+BasicPage.init();
+SearchResults.init();
 
-  // Load Events
-  $(document).ready(UTIL.loadEvents);
+var HideShowTransition = Barba.BaseTransition.extend({
+    start: function () {
+        Promise
+        .all([
+            this.newContainerLoading,
+            this.startOverlay()
+        ])
+        .then(this.finish.bind(this));
+    },
+    startOverlay: function () {
 
-})(jQuery); // Fully reference jQuery after this point.
+        $('body').addClass('leave');
+
+        return $(this.oldContainer).animate({
+            opacity: 1
+        }).delay(100).promise();
+        
+    },
+    finish: function () {
+
+        global_functions();
+
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+        this.done();
+
+        $('body').removeClass('leave');
+
+    }
+});
+
+Barba.Pjax.getTransition = function() {
+    return HideShowTransition;
+};
+Barba.Pjax.init();
+Barba.Prefetch.init();
+
+ 
+    
+    
+    
+})(jQuery);
+
+
+
+
